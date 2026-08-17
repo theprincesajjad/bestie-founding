@@ -95,10 +95,10 @@ describe("product founding access waitlist", () => {
   test("founding-access section uses locked copy and waitlist fields", () => {
     assert.match(html, /Help shape the bestie you actually want to hear from\./);
     assert.match(html, /Get early access to the working product\./);
-    assert.match(html, /Give feedback on tone and recovery copy/);
+    assert.match(html, /Give feedback on tone and recovery copy\./);
     assert.match(
       html,
-      /Get early access to the working product\. Give feedback on tone and recovery copy, fast log, Vault, and No-Spiral\./
+      /Get early access to the working product\. Give feedback on tone and recovery copy\./
     );
     assert.match(html, /Founding pricing will be shared only when it is actually locked\./);
     assert.match(html, /No payment today\. Not equity\. No fake exclusivity\./);
