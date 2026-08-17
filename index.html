@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Founding Girls — Bestie</title>
+  <meta name="description" content="Founding Girls is the first list for Bestie, a calorie tracker for women 18 and over who already quit the homework tracker. We will not take everyone.">
+  <meta name="robots" content="index,follow">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="sheet">
+    <p class="kicker">Founding Girls</p>
+    <h1>You already quit the homework tracker.</h1>
+    <div class="lines">
+      <p>Bestie is a calorie tracker for women 18 and over. Stay consistent without the guilt trip.</p>
+      <p>Founding Girls is the first list. You get in before the app is public, if you fit.</p>
+      <p>We will not take everyone.</p>
+    </div>
+
+    <form id="founding-form" novalidate>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required maxlength="80">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required maxlength="120">
+
+      <label class="check">
+        <input id="age" name="age" type="checkbox" value="18+" required>
+        <span>I am 18 or older</span>
+      </label>
+
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
+
+      <button type="submit" id="submit">Ask to be on the list</button>
+      <p class="fine">Not a share. Not a percent. Not a purchase.</p>
+      <p class="err" id="err" hidden></p>
+    </form>
+
+    <section class="thanks" id="thanks" hidden>
+      <h2>You're on the list.</h2>
+      <p>We only write if you're in. This was not a purchase.</p>
+    </section>
+  </main>
+  <script src="form.js"></script>
+</body>
+</html>
