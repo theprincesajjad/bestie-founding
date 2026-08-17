@@ -246,6 +246,7 @@ main > aside { padding: 4.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2)
   overflow: hidden;
 }
 .cal-track span { display: block; height: 100%; background: var(--cherry); }
+.cal-fill { width: 42%; }
 .meal-list { list-style: none; margin: 0.9rem 0 1rem; padding: 0; }
 .meal-list li {
   padding: 0.55rem 0;

@@ -36,7 +36,10 @@ const forbidden = [
   "C$15",
   "C$35",
   "if you fit",
-  "We will not take everyone"
+  "We will not take everyone",
+  "open-source project",
+  "Help steward Bestie in the open",
+  "source publication pending"
 ];
 
 const hits = forbidden.filter((phrase) => published.toLowerCase().includes(phrase.toLowerCase()));

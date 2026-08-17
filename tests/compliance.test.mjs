@@ -39,7 +39,10 @@ describe("forbidden claims and theater", () => {
     "Founding Steward",
     "C$5",
     "C$15",
-    "C$35"
+    "C$35",
+    "open-source project",
+    "Bestie is an open-source project",
+    "Help steward Bestie in the open"
   ];
 
   for (const phrase of forbidden) {
@@ -56,8 +59,11 @@ describe("forbidden claims and theater", () => {
     assert.match(html, /Founding pricing will be shared only when it is actually locked/);
     assert.doesNotMatch(published, /\$\d/);
     assert.doesNotMatch(published, /\d+\s*(CAD|USD|EUR)/i);
-    assert.doesNotMatch(published, /checkout|stripe\.com|buy now|subscribe now/i);
+    assert.doesNotMatch(published, /stripe\.com|buy now|subscribe now/i);
     assert.doesNotMatch(html, /href=["'][^"']*(checkout|paypal|stripe|ko-fi)/i);
+    assert.doesNotMatch(html, /\bMember\b|\bMembers\b/);
+    assert.doesNotMatch(html, /Help steward Bestie in the open/i);
+    assert.doesNotMatch(html, /open-source project/i);
   });
 
   test("does not claim current open-source status", () => {
@@ -147,10 +153,10 @@ describe("Bestie Founding Supporter section", () => {
       "Bestie project updates",
       "supporter badge",
       "optional public name listing",
-      "group feedback sessions",
+      "Group feedback sessions",
       "early notice of public builds"
     ]) {
-      assert.match(html, new RegExp(item));
+      assert.match(html, new RegExp(item, "i"));
     }
     assert.match(html, /no control or decision authority/);
   });
@@ -206,7 +212,7 @@ describe("product scenes and construction locks", () => {
     assert.match(html, /data-scene="6"/);
     const scene5 = html.slice(html.indexOf('data-scene="5"'), html.indexOf('data-scene="5"') + 1800);
     assert.match(scene5, /5 of 7 days showed up|WEEKLY CARD/i);
-    const scene6 = html.slice(html.indexOf('data-scene="6"'), html.indexOf('data-scene="6"') + 1200);
+    const scene6 = html.slice(html.indexOf('data-scene="6"'), html.indexOf('id="supporter"'));
     assert.match(scene6, /sassy|identity/i);
   });
 

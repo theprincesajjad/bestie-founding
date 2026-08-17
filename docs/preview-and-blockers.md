@@ -21,8 +21,10 @@ npm run capture
 
 Rendered captures (after `npm run capture`) land in `artifacts/`:
 
-- `artifacts/desktop-1440.png`
-- `artifacts/mobile-390.png`
+- `artifacts/desktop-1440.png` (1440×8200)
+- `artifacts/mobile-390.png` (390×14000)
+
+OCR of those captures found the truth line “being prepared for an open-source release” and the label “Bestie Founding Supporter”. It did not find vote, Member, “open-source project”, “Help steward Bestie in the open”, or “source publication pending”.
 
 No GitHub Pages settings were changed. Pages was already unset on this repository.
 
@@ -57,9 +59,9 @@ README mentioned `https://theprincesajjad.github.io/bestie-founding/`, but GitHu
 
 The existing `formsubmit.co` AJAX endpoint and inbox already in `form.js` are preserved for the **product founding access waitlist** only (name, email, 18+). That is not Bestie Founding Supporter enrollment and does not charge.
 
-### Membership brief
+### Price and tier brief
 
-`open-source-membership.md` and any price/tier brief were not used. No C$ amounts, no Founding Builder / Founding Steward names, no numbered tiers.
+No price or tier brief was used as a source. No C$ amounts, no Founding Builder / Founding Steward names, no numbered tiers, and no Member or partner status label.
 
 ### GitHub Pages / production
 

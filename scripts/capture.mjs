@@ -1,13 +1,13 @@
-import { spawn } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import { createServer } from "node:http";
-import { readFileSync, mkdirSync, writeFileSync, copyFileSync, existsSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join } from "node:path";
 
 const root = process.cwd();
 const outDir = join(root, "artifacts");
 const publicDir = "/opt/cursor/artifacts/screenshots";
 mkdirSync(outDir, { recursive: true });
-mkdirSync(publicDir, { recursive: true });
+if (existsSync("/opt/cursor/artifacts")) mkdirSync(publicDir, { recursive: true });
 
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -31,84 +31,29 @@ const server = createServer((req, res) => {
 });
 
 await new Promise((resolve) => server.listen(4173, "127.0.0.1", resolve));
-const base = "http://127.0.0.1:4173/";
 
-const chrome = spawn("google-chrome-stable", [
-  "--headless=new",
-  "--no-sandbox",
-  "--disable-gpu",
-  "--hide-scrollbars",
-  "--remote-debugging-port=9333",
-  "--user-data-dir=/tmp/bestie-chrome",
-  base
-], { stdio: "pipe" });
-
-async function waitForDevtools() {
-  for (let i = 0; i < 50; i += 1) {
-    try {
-      const pages = await fetch("http://127.0.0.1:9333/json/list").then((r) => r.json());
-      if (pages.length) return pages[0];
-    } catch {}
-    await new Promise((r) => setTimeout(r, 150));
-  }
-  throw new Error("Chrome DevTools did not start");
-}
-
-const page = await waitForDevtools();
-const ws = new WebSocket(page.webSocketDebuggerUrl);
-await new Promise((resolve, reject) => {
-  ws.addEventListener("open", resolve);
-  ws.addEventListener("error", reject);
-});
-
-let nextId = 0;
-function send(method, params = {}) {
-  return new Promise((resolve, reject) => {
-    const id = ++nextId;
-    const onMessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.id !== id) return;
-      ws.removeEventListener("message", onMessage);
-      if (data.error) reject(new Error(data.error.message));
-      else resolve(data.result);
-    };
-    ws.addEventListener("message", onMessage);
-    ws.send(JSON.stringify({ id, method, params }));
-  });
-}
-
-await send("Page.enable");
-await send("Runtime.enable");
-
-async function capture(width, height, name, mobile) {
-  await send("Emulation.setDeviceMetricsOverride", {
-    width,
-    height,
-    deviceScaleFactor: 1,
-    mobile,
-    screenWidth: width,
-    screenHeight: height
-  });
-  await send("Page.navigate", { url: base });
-  await send("Page.reload", { ignoreCache: true });
-  await new Promise((r) => setTimeout(r, 900));
-  const shot = await send("Page.captureScreenshot", {
-    format: "png",
-    captureBeyondViewport: true,
-    fromSurface: true
-  });
+function shot(width, height, name) {
   const dest = join(outDir, name);
-  writeFileSync(dest, Buffer.from(shot.data, "base64"));
-  copyFileSync(dest, join(publicDir, name));
-  console.log(dest);
+  const result = spawnSync("google-chrome-stable", [
+    "--headless=new",
+    "--no-sandbox",
+    "--disable-gpu",
+    "--hide-scrollbars",
+    "--force-device-scale-factor=1",
+    `--user-data-dir=/tmp/bestie-cap-${width}`,
+    `--window-size=${width},${height}`,
+    "--virtual-time-budget=12000",
+    `--screenshot=${dest}`,
+    "http://127.0.0.1:4173/"
+  ], { encoding: "utf8" });
+  if (result.status !== 0 || !existsSync(dest) || statSync(dest).size < 1000) {
+    console.error(result.stderr || result.stdout);
+    throw new Error(`chrome failed for ${name}`);
+  }
+  if (existsSync("/opt/cursor/artifacts")) copyFileSync(dest, join(publicDir, name));
+  console.log(`${dest} (${statSync(dest).size} bytes)`);
 }
 
-await capture(1440, 900, "desktop-1440.png", false);
-await capture(390, 844, "mobile-390.png", true);
-
-ws.close();
-chrome.kill("SIGTERM");
+shot(1440, 8200, "desktop-1440.png");
+shot(390, 14000, "mobile-390.png");
 server.close();
-if (!existsSync(join(outDir, "desktop-1440.png")) || !existsSync(join(outDir, "mobile-390.png"))) {
-  process.exit(1);
-}
