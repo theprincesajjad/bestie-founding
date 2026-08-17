@@ -1,7 +1,14 @@
-# Founding Girls
+# Bestie founding page
 
-Live list for Bestie. Not equity. Not a percent. Not a raise.
+Preview-only landing page for Bestie.
 
-Page: https://theprincesajjad.github.io/bestie-founding/
+- Product waitlist: **Join founding access** (name, email, 18+). No payment.
+- Community support: **Bestie Founding Supporter** is informational and disabled. No price, no enrollment.
 
-Copy source: `/workspace/studio/house/founding-copy.md` in the studio.
+```bash
+python3 -m http.server 4173
+npm test
+npm run capture
+```
+
+See `docs/preview-and-blockers.md`.

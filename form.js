@@ -1,11 +1,12 @@
 (function () {
-  var form = document.getElementById("founding-form");
+  var form = document.getElementById("founding-access-form");
   var thanks = document.getElementById("thanks");
   var err = document.getElementById("err");
   var btn = document.getElementById("submit");
   if (!form) return;
 
   var inbox = ["sajjad.pirani", "torontomu.ca"].join("@");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function showError(msg) {
     err.hidden = false;
@@ -15,7 +16,7 @@
   function done() {
     form.hidden = true;
     thanks.hidden = false;
-    thanks.scrollIntoView({ behavior: "smooth", block: "start" });
+    thanks.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   }
 
   form.addEventListener("submit", function (e) {
@@ -35,7 +36,7 @@
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return showError("Add a real email.");
     }
-    if (!age) return showError("Founding Girls is 18 and over.");
+    if (!age) return showError("Founding access is 18 and over.");
 
     btn.disabled = true;
     btn.textContent = "Sending…";
@@ -49,21 +50,24 @@
       body: JSON.stringify({
         name: name,
         email: email,
-        list: "Founding Girls",
+        list: "Founding Access",
         age: "18+",
-        _subject: "Founding Girls — new name on the list",
+        _subject: "Founding Access — new name on the product waitlist",
         _template: "table",
         _captcha: "false",
         _honey: form._honey.value
       })
     })
-      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (res) {
+        return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+      })
       .then(function (result) {
+        if (!result.ok) throw new Error("submit failed");
         done();
       })
       .catch(function () {
         btn.disabled = false;
-        btn.textContent = "Ask to be on the list";
+        btn.textContent = "Join founding access";
         showError("That did not go through. Try once more.");
       });
   });
