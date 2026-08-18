@@ -32,7 +32,7 @@ No GitHub Pages settings were changed. Pages was already unset on this repositor
 
 ### Designer source images were not on disk
 
-These paths were requested and were **not present** in this environment:
+Designer signed `/workspace/studio/bestie/visual/web/scene-founding-access.png`. That path, and the other studio visual paths below, were **not present** in this environment, so the signed bytes could not be copied into the build:
 
 - `/workspace/studio/bestie/visual/web/desktop-landing-1440.png`
 - `/workspace/studio/bestie/visual/web/mobile-landing-390.png`
