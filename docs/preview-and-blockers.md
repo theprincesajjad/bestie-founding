@@ -63,7 +63,7 @@ The existing `formsubmit.co` AJAX endpoint and inbox already in `form.js` are pr
 
 ### Price and tier brief
 
-The cream founding invitation card shows the locked informational amounts CA$5 / CA$15 / CA$50. Those prices are information only; supporter enrollment is disabled. Do not say pricing is unlocked or “shared only when locked.” No Founding Builder, no C$35, no Member or partner status label.
+The cherry founding scene uses the patched cream invitation card: includes list, status “Information only · enrollment off”, and informational CA$5 / CA$15 / CA$50. Join founding access is the product waitlist, not a pay control. Do not print “pricing shared only when locked.” The signed scene path `/workspace/studio/bestie/visual/web/scene-founding-access.png` (SHA-256 `5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699`) was not present in this environment, so those exact bytes could not be copied. No Founding Builder, no C$35, no Member or partner status label.
 
 ### GitHub Pages / production
 

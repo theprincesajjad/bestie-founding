@@ -484,8 +484,36 @@ main > aside { padding: 4.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2)
   border-radius: var(--radius);
   padding: 1.4rem 1.35rem 1.5rem;
 }
-.access-card .info-tiers { margin: 0 0 1.1rem; }
-.access-card .info-tiers article { background: var(--raised); }
+.include-list,
+.price-lines {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.include-list li {
+  position: relative;
+  padding: 0.28rem 0 0.28rem 1.15rem;
+}
+.include-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 8px;
+  background: var(--cherry);
+  border-radius: 2px;
+}
+.info-status {
+  margin: 0 0 0.85rem;
+  color: var(--cherry);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.price-lines li {
+  padding: 0.2rem 0;
+  font-weight: 500;
+}
 .access-note { color: var(--dim); margin: 0 0 1.1rem; font-size: 0.95rem; }
 label { display: block; margin: 0 0 0.35rem; font-size: 0.86rem; color: var(--dim); }
 input[type="text"],

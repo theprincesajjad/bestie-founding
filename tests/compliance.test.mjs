@@ -94,14 +94,14 @@ describe("product founding access waitlist", () => {
 
   test("founding-access section uses locked copy and waitlist fields", () => {
     assert.match(html, /Help shape the bestie you actually want to hear from\./);
-    assert.match(html, /Get early access to the working product\./);
-    assert.match(html, /Give feedback on tone and recovery copy\./);
-    assert.match(
-      html,
-      /Get early access to the working product\. Give feedback on tone and recovery copy\./
-    );
+    assert.match(html, /Early access\. Give feedback on tone and recovery copy\. Non-binding\./);
+    assert.match(html, /Founding access includes/);
+    assert.match(html, /Early access to the working product/);
+    assert.match(html, /Give feedback on tone and recovery copy/);
+    assert.match(html, /Direct feedback on fast log, Vault, No-Spiral/);
     assert.doesNotMatch(html, /Amounts are not shown here/);
-    assert.doesNotMatch(html, /Founding pricing shared only when/i);
+    assert.doesNotMatch(html, /pricing shared only when locked/i);
+    assert.doesNotMatch(html, /pricing isn[’']t locked/i);
     assert.match(html, /No payment today\. Not equity\. No fake exclusivity\./);
     assert.match(html, /You’re on the founding access list\./);
     assert.match(html, /<form[^>]+id="founding-access-form"/);
@@ -114,12 +114,12 @@ describe("product founding access waitlist", () => {
   test("cream invitation card shows the locked informational prices", () => {
     const cardStart = html.indexOf('class="access-card"');
     const card = html.slice(cardStart, html.indexOf("</section>", html.indexOf('id="founding-access"')));
+    assert.match(card, /Founding access includes/);
+    assert.match(card, /Information only · enrollment off/);
     assert.match(card, /CA\$5 \/ month — Founding Supporter/);
     assert.match(card, /CA\$15 \/ month — Founding Circle/);
     assert.match(card, /CA\$50 \/ month — Founding Steward/);
-    assert.match(card, /These prices are information only/);
-    assert.match(card, /Enrollment is disabled/);
-    assert.doesNotMatch(card, /Founding pricing shared only when/i);
+    assert.doesNotMatch(card, /pricing shared only when locked/i);
     assert.doesNotMatch(card, /Amounts are not shown here/);
   });
 
