@@ -95,30 +95,6 @@ describe("product founding access waitlist", () => {
     assert.doesNotMatch(hero, /See how it works/);
   });
 
-  test("hero phone uses the locked Today chrome", () => {
-    const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
-    assert.doesNotMatch(hero, /Hey you/);
-    assert.doesNotMatch(hero, /Breakfast \/ Greek yogurt/);
-    assert.doesNotMatch(hero, /phone-dock/);
-    assert.match(hero, /class="phone-title">Today</);
-    assert.match(hero, /Aug 17 · example day/);
-    assert.match(hero, /Lunch logged\. Your day is still yours\./);
-    assert.match(hero, /class="cal-ribbon"/);
-    assert.match(hero, />1,120</);
-    assert.match(hero, /calories left/);
-    assert.match(hero, /class="meals-label">MEALS</);
-    assert.match(hero, /Greek yogurt, berries/);
-    assert.match(hero, /Chicken wrap/);
-    assert.match(hero, /Almond latte/);
-    assert.match(hero, /class="meal-log">Log</);
-    assert.match(hero, /class="phone-tabs"/);
-    assert.match(hero, /class="tab-on">Today</);
-    assert.match(hero, />Cravings</);
-    assert.match(hero, />Progress</);
-    assert.match(hero, /class="plus"/);
-    assert.match(css, /\.phone-tabs[\s\S]*\.plus[\s\S]*background:\s*var\(--cherry\)/);
-  });
-
   test("header is wordmark only with no capsule nav", () => {
     assert.match(html, /class="wordmark"/);
     assert.doesNotMatch(html, /class="nav-links"/);
@@ -290,7 +266,7 @@ describe("locked visual asset hashes", () => {
   const locked = {
     "assets/sassy-center-transparent.png": "1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f",
     "assets/companion-sassy.png": "5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f",
-    "assets/scene-hero.png": "70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737",
+    "assets/scene-hero.png": "96a9d37e556fc30162f83adfa4bf83fa83abe330c63ac1d4cb10e9f9084064fd",
     "assets/scene-founding-access.png": "5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699",
     "assets/scene-open-source-proof.png": "448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573"
   };

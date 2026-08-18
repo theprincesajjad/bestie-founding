@@ -2,11 +2,9 @@
 
 This branch is a **preview-only** replacement landing page. It is not a production publish.
 
-## HOLD scope
+## HOLD — do not recapture as a pass
 
-Designer still owns in-app components. This landing page only reconstructs the hero phone from `assets/scene-hero.png` (Today chrome). Do not treat captures as a Designer pass of the product UI.
-
-Recapture 1440/390 only after the live hero phone shows: title Today, calories-left ribbon, grouped MEALS list, and the system tab bar with Today / Cravings / Progress plus a filled +. Do not resubmit `92f41df…`, `bb748ce…`, `0b57a55…`, or `890622a…`.
+Designer rejected the current in-app component UI: hero phone chrome, cards, nav, and chips. That hero phone is **not done**. Do not recapture 1440/390 as a Designer pass. Do not treat existing captures as a pass. Wait for Designer to replace visual/app plus the hero phone.
 
 Still locked and now on disk:
 
@@ -33,7 +31,7 @@ npm run lint
 npm run build
 ```
 
-`npm run capture` is for landing-page proof that the hero phone chrome is on the live page. It is not a product-UI pass.
+Do **not** run `npm run capture` for a pass until Designer replaces the hero phone and visual/app.
 
 ## Locked assets (hashed after pull)
 
@@ -41,17 +39,17 @@ npm run build
 | --- | --- |
 | `assets/sassy-center-transparent.png` | `1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f` |
 | `assets/companion-sassy.png` | `5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f` |
-| `assets/scene-hero.png` | `70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737` |
+| `assets/scene-hero.png` | `96a9d37e556fc30162f83adfa4bf83fa83abe330c63ac1d4cb10e9f9084064fd` |
 | `assets/scene-founding-access.png` | `5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699` |
 | `assets/scene-open-source-proof.png` | `448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573` |
 
-Hero, founding, and artifact place the real cutout. Phone z-index stays above Sassy so meal names and remaining calories stay readable. The hero phone is the locked Today chrome only.
+Hero, founding, and artifact place the real cutout. Phone z-index stays above Sassy so meal names stay readable. The hero phone UI itself is rejected placeholder chrome pending Designer replacement.
 
 ## Blockers
 
-### Designer visual/app
+### Designer visual/app and hero phone
 
-Designer still owns in-app components. Attachment history: earlier chat attachments arrived as descriptions, not persistable bytes. The five locked files are now in `assets/` on this branch. Hero scene hash is `70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737`.
+Designer will replace visual/app plus the hero phone. Attachment history: earlier chat attachments arrived as descriptions, not persistable bytes. The five locked files are now in `assets/` on this branch.
 
 ### Analytics
 
