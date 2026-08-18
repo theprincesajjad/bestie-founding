@@ -34,7 +34,15 @@ No GitHub Pages settings were changed. Pages was already unset on this repositor
 
 Designer source is independently vote-clean and may be used again. In this environment the studio mount is still missing, so those files could not be opened or copied.
 
-Approved art lock still **not on disk**: `/workspace/studio/bestie/companion-sassy.png`. Placement crop `sassy-center-transparent.png` is also missing. Chat attachments arrived as descriptions, not persistable bytes. No replacement character was invented. The page still uses a CSS stand-in until those exact files can be copied into `assets/`.
+Approved art lock still **not on disk**. Every PNG on this VM was hashed; none matched:
+
+- `companion-sassy.png` `5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f`
+- `sassy-center-transparent.png` `1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f`
+- `scene-hero.png` `96a9d37e556fc30162f83adfa4bf83fa83abe330c63ac1d4cb10e9f9084064fd`
+- `scene-founding-access.png` `d8442bed38fcbd0c21ea02528e7ab70266ab70b2bd9598754bc1e05826778cc6`
+- `scene-open-source-proof.png` `448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573`
+
+Chat attachments arrived as descriptions, not persistable bytes. No replacement character was invented. The page references `assets/sassy-center-transparent.png` and no longer ships a CSS stand-in. Copy those five files into `assets/` when they are on disk.
 
 Designer signed `/workspace/studio/bestie/visual/web/scene-founding-access.png`. That path, and the other studio visual paths below, were **not present** here:
 

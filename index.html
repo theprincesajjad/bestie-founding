@@ -24,29 +24,18 @@
   <header class="top">
     <nav class="nav" aria-label="Primary">
       <a class="wordmark" href="#main">Bestie</a>
-      <ul class="nav-links">
-        <li><a href="#fast-log">How it works</a></li>
-        <li><a href="#why">Why Bestie</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a class="btn btn-ghost" href="#fast-log">See the product</a>
-        <a class="btn btn-cherry" href="#founding-access">Join founding access</a>
-      </div>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker"><span class="dot" aria-hidden="true"></span> CALORIE TRACKING, NO GUILT</p>
-        <h1 id="hero-title">Keep the plan. Lose the guilt trip.</h1>
-        <p class="voice">Log food in seconds, park a craving, and keep showing up after a messy day—with a bestie on your side.</p>
+        <h1 id="hero-title">Keep the plan.<br>Lose the <span class="guilt">guilt trip.</span></h1>
+        <p class="voice">Log food in seconds. Park the craving. Show up after a messy day.</p>
         <div class="hero-actions">
           <a class="btn btn-cherry btn-lg" href="#founding-access">Join founding access</a>
-          <a class="btn btn-sunken btn-lg" href="#fast-log">See how it works <span aria-hidden="true">↓</span></a>
         </div>
-        <p class="fine">For adults 18+ · Product waitlist only · No payment today</p>
+        <p class="fine">For adults 18+ · No invented countdowns</p>
       </div>
       <div class="hero-visual">
         <div class="halo" aria-hidden="true"></div>
@@ -77,7 +66,7 @@
             </div>
           </div>
         </figure>
-        <div class="sassy sassy-hero" data-state="idle" aria-hidden="true"></div>
+        <img class="sassy-img sassy-hero" src="assets/sassy-center-transparent.png" alt="" width="280" height="520">
       </div>
     </section>
 
@@ -148,7 +137,7 @@
             </div>
           </article>
         </div>
-        <div class="sassy sassy-vault" data-state="tuck" aria-hidden="true"></div>
+        <img class="sassy-img sassy-vault" src="assets/sassy-center-transparent.png" alt="" width="110" height="200">
       </figure>
       <div class="feature-copy">
         <p class="kicker"><span class="dot" aria-hidden="true"></span> CRAVING VAULT</p>
@@ -171,7 +160,7 @@
         <p class="over-meta">calories over · example day</p>
         <p class="over-voice">No spiral. Log it and move on.</p>
         <div class="close-day" aria-hidden="true">Close the day →</div>
-        <div class="sassy sassy-held" data-state="held" aria-hidden="true"></div>
+        <img class="sassy-img sassy-held" src="assets/sassy-center-transparent.png" alt="" width="110" height="200">
       </figure>
     </section>
 
@@ -205,38 +194,30 @@
       </div>
     </section>
 
-    <section class="feature" id="artifact" aria-labelledby="artifact-title">
+    <section class="feature artifact-scene" id="artifact" aria-labelledby="artifact-title">
       <div class="feature-copy">
-        <p class="kicker"><span class="dot" aria-hidden="true"></span> BUILD ARTIFACT</p>
-        <h2 id="artifact-title">Show the artifact. Skip the star theater.</h2>
-        <p>The repo is private and being prepared for an open-source release. Until the exact source module, license, and commit are public, this page shows only the verified build artifact.</p>
-        <p class="fine">What is verifiable now: the selected RealityKit asset, its default prim, file size, and checksum.</p>
+        <p class="kicker tight"><span class="dot" aria-hidden="true"></span> BUILD ARTIFACT</p>
+        <h2 id="artifact-title">Show the girl. Skip the star theater.</h2>
+        <p>The repo is private and being prepared for an open-source release.</p>
+        <dl class="artifact-facts">
+          <div>
+            <dt>Companion.usdz</dt>
+            <dd>835,441 bytes</dd>
+          </div>
+          <div>
+            <dt>defaultPrim</dt>
+            <dd>/Companion</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd>cab2d50c…3b1e59</dd>
+          </div>
+        </dl>
+        <p class="hash-full">Full SHA-256: cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59.</p>
+        <p class="warn">Being prepared for an open-source release. Until source, license, and commit are public, this is the verified local artifact. Not an OSS claim.</p>
       </div>
-      <figure class="scene-card espresso-card artifact-card" aria-label="Verified local build artifact Companion.usdz, 835,441 bytes, default prim /Companion, SHA-256 cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59.">
-        <div class="artifact-head">
-          <code>Companion.usdz</code>
-          <span>VERIFIED LOCAL ARTIFACT</span>
-        </div>
-        <pre class="code" aria-hidden="true"><span class="kw">defaultPrim</span> = <span class="str">"Companion"</span>
-<span class="kw">upAxis</span> = <span class="str">"Y"</span>
-<span class="kw">metersPerUnit</span> = 1
-
-<span class="kw">def</span> Xform <span class="str">"Companion"</span> {
-    <span class="cmt"># Sassy art lock</span>
-    <span class="cmt"># RealityKit / USDZ</span>
-}</pre>
-        <div class="meta-boxes">
-          <div>
-            <span>Artifact size</span>
-            <strong>835,441 bytes</strong>
-          </div>
-          <div>
-            <span>SHA-256</span>
-            <strong>cab2d50c…3b1e59</strong>
-          </div>
-        </div>
-        <p class="hash-full">Full SHA-256: cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59. Default prim /Companion.</p>
-        <p class="warn">Being prepared for an open-source release. Publish the exact source module, asset or reproducible build recipe, repository LICENSE, and commit link before any open-source label.</p>
+      <figure class="artifact-girl" aria-label="Verified local companion figure. Companion.usdz, 835,441 bytes, default prim /Companion, SHA-256 cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59.">
+        <img class="sassy-img sassy-artifact" src="assets/sassy-center-transparent.png" alt="" width="320" height="600">
       </figure>
     </section>
 
@@ -283,8 +264,8 @@
           </section>
         </div>
       </div>
-      <div class="sassy-identity" aria-label="Sassy identity. CSS brand figure standing in for the approved 3D companion because the source image bytes were not persisted in this environment.">
-        <div class="sassy sassy-lg" data-state="idle" aria-hidden="true"></div>
+      <div class="sassy-identity">
+        <img class="sassy-img sassy-lg" src="assets/sassy-center-transparent.png" alt="" width="280" height="520">
       </div>
     </section>
 

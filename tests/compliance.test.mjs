@@ -84,12 +84,20 @@ describe("forbidden claims and theater", () => {
 
 describe("product founding access waitlist", () => {
   test("hero uses the locked product copy", () => {
-    assert.match(html, /CALORIE TRACKING, NO GUILT/);
-    assert.match(html, /Keep the plan\. Lose the guilt trip\./);
-    assert.match(
-      html,
-      /Log food in seconds, park a craving, and keep showing up after a messy day—with a bestie on your side\./
-    );
+    assert.match(html, /Keep the plan\./);
+    assert.match(html, /guilt trip\./);
+    assert.match(html, /Log food in seconds\. Park the craving\. Show up after a messy day\./);
+    assert.match(html, /For adults 18\+ · No invented countdowns/);
+    assert.doesNotMatch(html, /Product waitlist only/);
+    const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
+    assert.match(hero, /Join founding access/);
+    assert.doesNotMatch(hero, /See how it works/);
+  });
+
+  test("header is wordmark only with no capsule nav", () => {
+    assert.match(html, /class="wordmark"/);
+    assert.doesNotMatch(html, /class="nav-links"/);
+    assert.doesNotMatch(html, /class="nav-actions"/);
   });
 
   test("founding-access section uses locked copy and waitlist fields", () => {
@@ -197,8 +205,8 @@ describe("product scenes and construction locks", () => {
       "Progress without the lecture.",
       "A one-minute check-in, soft consistency, optional weight, and one useful focus for next week. Private by default.",
       "Keep showing up. We'll meet you there.",
-      "Show the artifact. Skip the star theater.",
-      "The repo is private and being prepared for an open-source release. Until the exact source module, license, and commit are public, this page shows only the verified build artifact.",
+      "Show the girl. Skip the star theater.",
+      "The repo is private and being prepared for an open-source release.",
       "Being prepared for an open-source release."
     ];
     for (const line of lines) {
@@ -212,15 +220,23 @@ describe("product scenes and construction locks", () => {
     const scene5 = html.slice(html.indexOf('data-scene="5"'), html.indexOf('data-scene="5"') + 1800);
     assert.match(scene5, /5 of 7 days showed up|WEEKLY CARD/i);
     const scene6 = html.slice(html.indexOf('data-scene="6"'), html.indexOf('id="supporter"'));
-    assert.match(scene6, /sassy|identity/i);
+    assert.match(scene6, /sassy-center-transparent\.png/);
   });
 
   test("artifact facts are limited to verified local values", () => {
     assert.match(html, /Companion\.usdz/);
     assert.match(html, /835,441 bytes/);
+    assert.match(html, /defaultPrim/);
     assert.match(html, /\/Companion/);
     assert.match(html, /cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59/);
     assert.doesNotMatch(html, /stargazers|contributors|MIT License|github.com\/.*\/blob/i);
+    assert.doesNotMatch(html, /class="code"|def Xform/);
+  });
+
+  test("places the approved Sassy crop and does not ship a CSS stand-in", () => {
+    assert.match(html, /assets\/sassy-center-transparent\.png/);
+    assert.doesNotMatch(css, /radial-gradient\(circle at 50% 18%/);
+    assert.doesNotMatch(html, /CSS brand figure|sassy sassy-hero|sassy sassy-lg/);
   });
 
   test("Fast Log sheet does not include Sassy", () => {
