@@ -3,45 +3,415 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Founding Girls — Bestie</title>
-  <meta name="description" content="Founding Girls is the first list for Bestie, a calorie tracker for women 18 and over who already quit the homework tracker. We will not take everyone.">
+  <title>Bestie — Calorie tracking, no guilt</title>
+  <meta name="description" content="Bestie is a calorie tracker that talks like a friend. Bestie is being prepared for an open-source release. Product founding access is a waitlist. Bestie Founding Supporter enrollment is disabled.">
   <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Bestie — Calorie tracking, no guilt">
+  <meta property="og:description" content="Bestie is a calorie tracker that talks like a friend. Bestie is being prepared for an open-source release. Product founding access is a waitlist. Bestie Founding Supporter enrollment is disabled.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bestie — Calorie tracking, no guilt">
+  <meta name="twitter:description" content="Bestie is a calorie tracker that talks like a friend. Bestie is being prepared for an open-source release. Product founding access is a waitlist. Bestie Founding Supporter enrollment is disabled.">
+  <meta name="twitter:image" content="assets/og.svg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="sheet">
-    <p class="kicker">Founding Girls</p>
-    <h1>You already quit the homework tracker.</h1>
-    <div class="lines">
-      <p>Bestie is a calorie tracker for women 18 and over. Stay consistent without the guilt trip.</p>
-      <p>Founding Girls is the first list. You get in before the app is public, if you fit.</p>
-      <p>We will not take everyone.</p>
-    </div>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <form id="founding-form" novalidate>
-      <label for="name">Name</label>
-      <input id="name" name="name" type="text" autocomplete="name" required maxlength="80">
+  <header class="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="wordmark" href="#main">Bestie</a>
+    </nav>
+  </header>
 
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" autocomplete="email" required maxlength="120">
-
-      <label class="check">
-        <input id="age" name="age" type="checkbox" value="18+" required>
-        <span>I am 18 or older</span>
-      </label>
-
-      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
-
-      <button type="submit" id="submit">Ask to be on the list</button>
-      <p class="fine">Not a share. Not a percent. Not a purchase.</p>
-      <p class="err" id="err" hidden></p>
-    </form>
-
-    <section class="thanks" id="thanks" hidden>
-      <h2>You're on the list.</h2>
-      <p>We only write if you're in. This was not a purchase.</p>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="serif-title">Keep the plan.<br><span class="hero-line">Lose the <span class="guilt">guilt trip.</span></span></h1>
+        <p class="voice">Log food in seconds. Park the craving. Show up after a messy day.</p>
+        <div class="hero-actions">
+          <a class="btn btn-cherry btn-lg" href="#founding-access">Join founding access</a>
+        </div>
+        <p class="fine">For adults 18+ · No invented countdowns</p>
+      </div>
+      <div class="hero-visual">
+        <div class="halo" aria-hidden="true"></div>
+        <img class="sassy-img sassy-hero" src="assets/sassy-center-transparent.png" alt="" width="280" height="520">
+        <figure class="phone-stage" aria-label="Illustrative Bestie Today screen. Example day with 940 calories left. Breakfast oats and banana, lunch chicken grain bowl. Dinner and snacks not logged.">
+          <div class="phone" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="phone-bar">
+                <span>9:41</span>
+              </div>
+              <div class="phone-head">
+                <span class="s-mark">S</span>
+                <span>Mon 17</span>
+              </div>
+              <p class="phone-hello">Hey you</p>
+              <p class="phone-voice">Lunch is logged. Organized girl behavior.</p>
+              <div class="cal-ribbon">
+                <div>
+                  <p class="cal-num">940</p>
+                  <p class="cal-meta">calories left · example day</p>
+                  <div class="cal-track"><span class="cal-fill"></span></div>
+                </div>
+                <img class="sassy-mini" src="assets/sassy-center-transparent.png" alt="" width="44" height="82">
+              </div>
+              <p class="meals-label">MEALS</p>
+              <ul class="meal-group">
+                <li>
+                  <span class="meal-name"><b>Breakfast</b><small>Oats, banana</small></span>
+                  <b>360</b>
+                </li>
+                <li>
+                  <span class="meal-name"><b>Lunch</b><small>Chicken grain bowl</small></span>
+                  <b>500</b>
+                </li>
+                <li>
+                  <span class="meal-name"><b>Dinner</b></span>
+                  <b class="meal-log">Log</b>
+                </li>
+                <li>
+                  <span class="meal-name"><b>Snacks</b></span>
+                  <b class="meal-log">Log</b>
+                </li>
+              </ul>
+              <p class="week-note">4 days showed up this week</p>
+              <nav class="phone-tabs">
+                <span class="tab-on">Today</span>
+                <span>Cravings</span>
+                <span>Progress</span>
+                <span class="plus">+</span>
+              </nav>
+            </div>
+          </div>
+        </figure>
+      </div>
     </section>
+
+    <section class="feature" id="fast-log" aria-labelledby="fast-log-title">
+      <div class="feature-copy">
+        <p class="kicker"><span class="dot" aria-hidden="true"></span> FAST LOG</p>
+        <h2 id="fast-log-title" class="serif-title">Logging should feel like a tap, not homework.</h2>
+        <p>Recents first. Search focused. Barcode and copy-yesterday within reach. The companion stays out of the sheet so nothing slows the job.</p>
+        <p class="fine">Illustrative product view · first recent food target: two taps</p>
+      </div>
+      <figure class="scene-card" aria-label="Illustrative Fast Log sheet for adding lunch. Recents list with chicken wrap, Greek yogurt, and almond latte. Sassy is not in this utility sheet.">
+        <div class="scene-meta">
+          <span>FOOD LOG · EXAMPLE CONTENT</span>
+          <span class="pill">2-tap path</span>
+        </div>
+        <div class="sheet" aria-hidden="true">
+          <div class="handle"></div>
+          <p class="sheet-title">Add to lunch</p>
+          <div class="pills">
+            <span class="pill-on">Lunch</span>
+            <span class="pill-off">Breakfast</span>
+            <span class="pill-off">Dinner</span>
+          </div>
+          <div class="search">What did you have?</div>
+          <div class="quick">
+            <span>Barcode</span>
+            <span>Copy yesterday</span>
+            <span>Custom</span>
+          </div>
+          <p class="recents-label">RECENTS</p>
+          <ul class="recents">
+            <li><span><b>Chicken wrap</b><small>470 cal</small></span><i>+</i></li>
+            <li><span><b>Greek yogurt + berries</b><small>310 cal</small></span><i>+</i></li>
+            <li><span><b>Almond latte</b><small>120 cal</small></span><i>+</i></li>
+          </ul>
+        </div>
+      </figure>
+    </section>
+
+    <section class="feature feature-flip" id="craving-vault" aria-labelledby="vault-title">
+      <figure class="scene-card vault-stage" aria-label="Illustrative Craving Vault with three parked cards: spicy noodles, Friday pizza, and cinnamon roll. Equal revisit choices. Sassy does not cover the controls.">
+        <div class="scene-meta"><span>CRAVING VAULT · ILLUSTRATIVE STATE</span></div>
+        <div class="vault-stack" aria-hidden="true">
+          <article class="vault-card tilt-a">
+            <span class="emoji">🍜</span>
+            <div>
+              <strong>Spicy noodles</strong>
+              <small>Parked Saturday · social</small>
+            </div>
+          </article>
+          <article class="vault-card tilt-b">
+            <span class="emoji">🍕</span>
+            <div>
+              <strong>Friday pizza</strong>
+              <small>Planned for Friday</small>
+            </div>
+          </article>
+          <article class="vault-card">
+            <span class="emoji">🥐</span>
+            <div>
+              <strong>Cinnamon roll</strong>
+              <small>Still thinking about it?</small>
+            </div>
+            <div class="vault-actions">
+              <span>Yes, I want it</span>
+              <span>Not anymore</span>
+              <span>Another day</span>
+            </div>
+          </article>
+        </div>
+        <img class="sassy-img sassy-vault" src="assets/sassy-center-transparent.png" alt="" width="110" height="200">
+      </figure>
+      <div class="feature-copy">
+        <p class="kicker"><span class="dot" aria-hidden="true"></span> CRAVING VAULT</p>
+        <h2 id="vault-title" class="serif-title">Want it now. Decide later.</h2>
+        <p>Park a craving without moral labels. Revisit it, enjoy it on purpose, reschedule it, or watch it expire.</p>
+        <p class="fine">The save commits before Sassy moves. Cute never blocks the action.</p>
+      </div>
+    </section>
+
+    <section class="feature" id="no-spiral" aria-labelledby="nospiral-title">
+      <div class="feature-copy">
+        <p class="kicker"><span class="dot" aria-hidden="true"></span> NO-SPIRAL</p>
+        <h2 id="nospiral-title">The day went off plan. You didn't.</h2>
+        <p class="voice">Bestie tells the truth without turning one dinner into a three-day disappearance. No punishment workout. No apology. Just the next meal.</p>
+        <p class="fine">Illustrative over-target state. Espresso means truth; cherry is not used as danger.</p>
+      </div>
+      <figure class="scene-card espresso-card" aria-label="Illustrative No-Spiral recovery state showing plus 180 calories over an example day, with cream copy and a Close the day control.">
+        <div class="scene-meta light"><span>TODAY · RECOVERY STATE</span></div>
+        <p class="over-num">+180</p>
+        <p class="over-meta">calories over · example day</p>
+        <p class="over-voice">No spiral. Log it and move on.</p>
+        <div class="close-day" aria-hidden="true">Close the day →</div>
+        <img class="sassy-img sassy-held" src="assets/sassy-center-transparent.png" alt="" width="110" height="200">
+      </figure>
+    </section>
+
+    <section class="feature feature-flip" id="why" data-scene="5" aria-labelledby="weekly-title">
+      <figure class="scene-card" aria-label="Illustrative private weekly card. Example week with 5 of 7 days showed up. No activity ring, flame, or share control.">
+        <div class="scene-meta"><span>PRIVATE WEEKLY CARD · EXAMPLE WEEK</span></div>
+        <div class="week-card" aria-hidden="true">
+          <p class="kicker tight"><span class="dot"></span> YOUR WEEK</p>
+          <p class="week-title">5 of 7 days showed up.</p>
+          <ol class="days">
+            <li class="on">M</li>
+            <li class="on">T</li>
+            <li>W</li>
+            <li class="on">T</li>
+            <li class="on">F</li>
+            <li>S</li>
+            <li class="on">S</li>
+          </ol>
+          <div class="week-stats">
+            <div><b>5</b><span>days logged</span></div>
+            <div><b>2</b><span>cravings handled</span></div>
+          </div>
+          <p class="week-voice">One quiet week still counts as showing up.</p>
+        </div>
+      </figure>
+      <div class="feature-copy">
+        <p class="kicker"><span class="dot" aria-hidden="true"></span> WEEKLY CARD</p>
+        <h2 id="weekly-title">Progress without the lecture.</h2>
+        <p>A one-minute check-in, soft consistency, optional weight, and one useful focus for next week. Private by default.</p>
+        <p class="fine">No activity ring. No flame. No share button in v1.</p>
+      </div>
+    </section>
+
+    <section class="feature artifact-scene" id="artifact" aria-labelledby="artifact-title">
+      <div class="feature-copy">
+        <p class="kicker tight"><span class="dot" aria-hidden="true"></span> BUILD ARTIFACT</p>
+        <h2 id="artifact-title" class="serif-title">Show the girl. Skip the star theater.</h2>
+        <p>The repo is private and being prepared for an open-source release.</p>
+        <dl class="artifact-facts">
+          <div>
+            <dt>Companion.usdz</dt>
+            <dd>835,441 bytes</dd>
+          </div>
+          <div>
+            <dt>defaultPrim</dt>
+            <dd>/Companion</dd>
+          </div>
+          <div>
+            <dt>SHA-256</dt>
+            <dd>cab2d50c…3b1e59</dd>
+          </div>
+        </dl>
+        <p class="hash-full">Full SHA-256: cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59.</p>
+        <p class="warn">Being prepared for an open-source release. Until source, license, and commit are public, this is the verified local artifact. Not an OSS claim.</p>
+      </div>
+      <figure class="artifact-girl" aria-label="Verified local companion figure. Companion.usdz, 835,441 bytes, default prim /Companion, SHA-256 cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59.">
+        <img class="sassy-img sassy-artifact" src="assets/sassy-center-transparent.png" alt="" width="320" height="600">
+      </figure>
+    </section>
+
+    <section class="founding" id="founding-access" data-scene="6" aria-labelledby="access-title">
+      <div class="founding-copy">
+        <p class="kicker invert"><span class="dot light" aria-hidden="true"></span> CALORIE TRACKING, NO GUILT</p>
+        <h2 id="access-title" class="serif-title">Help shape the bestie you actually want to hear from.</h2>
+        <p>Early access. Give feedback on tone and recovery copy. Non-binding.</p>
+        <div class="access-card">
+          <h3>Founding access includes</h3>
+          <ul class="include-list">
+            <li>Early access to the working product</li>
+            <li>Give feedback on tone and recovery copy</li>
+            <li>Direct feedback on fast log, Vault, No-Spiral</li>
+          </ul>
+          <p class="info-status">Information only · enrollment off</p>
+          <ul class="price-lines" aria-label="Informational amounts. Not purchasable.">
+            <li>CA$5 / month — Founding Supporter</li>
+            <li>CA$15 / month — Founding Circle</li>
+            <li>CA$50 / month — Founding Steward</li>
+          </ul>
+          <p class="access-note">Join founding access is a product waitlist. It is not a pay control and does not enroll a Bestie Founding Supporter.</p>
+          <form id="founding-access-form" novalidate>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required maxlength="80">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required maxlength="120">
+
+            <label class="check">
+              <input id="age" name="age" type="checkbox" value="18+" required>
+              <span>I am 18 or older</span>
+            </label>
+
+            <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
+
+            <button type="submit" id="submit">Join founding access</button>
+            <p class="fine">No payment today. Not equity. No fake exclusivity.</p>
+            <p class="err" id="err" hidden></p>
+          </form>
+          <section class="thanks" id="thanks" hidden>
+            <h3>You’re on the founding access list.</h3>
+            <p>Thanks—we’ll email you about early access and product feedback. No payment was made.</p>
+          </section>
+        </div>
+      </div>
+      <div class="sassy-identity">
+        <img class="sassy-img sassy-lg" src="assets/sassy-center-transparent.png" alt="" width="280" height="520">
+      </div>
+    </section>
+
+    <section class="supporter" id="supporter" aria-labelledby="supporter-title">
+      <h2 id="supporter-title">Bestie Founding Supporter</h2>
+      <p class="lede">Bestie is being prepared for an open-source release.</p>
+
+      <div class="info-tiers" aria-label="Informational Bestie Founding Supporter amounts. Not purchasable.">
+        <article>
+          <h3>CA$5 / month — Founding Supporter</h3>
+          <p>Project updates. Supporter badge.</p>
+        </article>
+        <article>
+          <h3>CA$15 / month — Founding Circle</h3>
+          <p>Everything in Founding Supporter, plus optional public name listing with consent, and early notices about public builds.</p>
+        </article>
+        <article>
+          <h3>CA$50 / month — Founding Steward</h3>
+          <p>Everything in Founding Circle, plus roadmap feedback sessions / submit feedback. Feedback is explicitly non-binding and provides no authority.</p>
+        </article>
+      </div>
+
+      <p class="lede">Enrollment is disabled. These prices are information only. No join link, no charge, and no test charge until payout is connected and a final launch confirmation is given.</p>
+
+      <div class="ledger" id="ledger">
+        <h3>Funding &amp; Spending Ledger</h3>
+        <p class="ledger-stamp">Founder-maintained; not platform-verified.</p>
+        <p>Monthly structure in CAD. No receipts, fees, taxes, or expenses have been recorded yet.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Empty informational ledger. There is no activity yet.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Month</th>
+                <th scope="col">Gross receipts</th>
+                <th scope="col">Ko-fi/Stripe fees</th>
+                <th scope="col">Taxes reserved</th>
+                <th scope="col">Net receipts</th>
+                <th scope="col">Dated expenses</th>
+                <th scope="col">Purpose/category</th>
+                <th scope="col">Receipt/reference IDs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="8">No activity yet. Privacy-safe redacted receipt and reference IDs will appear here only after real transactions exist.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="supporter-cta">
+        <button type="button" id="supporter-cta" disabled>Enrollment is disabled</button>
+      </div>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="faq-intro">
+        <p class="kicker"><span class="dot" aria-hidden="true"></span> QUESTIONS, ANSWERED</p>
+        <h2 id="faq-title" class="serif-title">Before you invite a bestie into your food log.</h2>
+      </div>
+      <dl class="faq-list">
+        <div>
+          <dt>Is Bestie an AI coach?</dt>
+          <dd>No. Bestie is a calorie tracker with a context-aware voice system. It is not a chat coach, recipe app, or nutrition database flex.</dd>
+        </div>
+        <div>
+          <dt>What happens if I go over?</dt>
+          <dd>No-Spiral restyles Today with the honest number and one next action. It never offers compensation, shame, or a punishment workout.</dd>
+        </div>
+        <div>
+          <dt>Do I have to track weight?</dt>
+          <dd>No. Weight is optional, weekly by default, shown as a quiet trend, and never placed in a notification.</dd>
+        </div>
+        <div>
+          <dt>Who is founding access for?</dt>
+          <dd>Adults 18 or older. That is the only eligibility rule. The product waitlist does not select, rank, or exclude people for fit.</dd>
+        </div>
+        <div>
+          <dt>Is the waitlist the same as Bestie Founding Supporter?</dt>
+          <dd>No. Join founding access is a product waitlist for early access and feedback. Bestie Founding Supporter is a separate community-support path. Enrollment is disabled.</dd>
+        </div>
+        <div>
+          <dt>What is a Bestie Founding Supporter?</dt>
+          <dd>Community support only. A Bestie Founding Supporter would receive only the listed community benefits after enrollment opens. Support is not open yet.</dd>
+        </div>
+        <div>
+          <dt>Is this an investment or ownership stake?</dt>
+          <dd>No. It is not an investment and provides no ownership, equity, profit share, dividends, financial return, appreciation, escrow, insurance, governance rights, or claim on Bestie or its assets.</dd>
+        </div>
+        <div>
+          <dt>Is Bestie open source today?</dt>
+          <dd>No. Bestie is not open source today. Bestie is being prepared for an open-source release. Only verified local artifact facts are shown until the exact source module, license, commit, and source URL are public.</dd>
+        </div>
+        <div>
+          <dt>When can someone enroll as a Bestie Founding Supporter?</dt>
+          <dd>Enrollment is disabled. These prices are information only. No join link, no charge, and no test charge until payout is connected and a final launch confirmation is given.</dd>
+        </div>
+        <div>
+          <dt>Can a name be listed publicly?</dt>
+          <dd>Public name listing is optional. It is a later, opt-in community benefit and is not required to join the product waitlist.</dd>
+        </div>
+        <div>
+          <dt>How transparent is the ledger?</dt>
+          <dd>The Funding &amp; Spending Ledger is founder-maintained; not platform-verified. It is structured in monthly CAD and currently has no activity.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <aside class="disclaimer" aria-label="Legal disclaimer">
+      <p>Community support only. A Bestie Founding Supporter receives only the listed community benefits. This is not an investment and provides no ownership, equity, profit share, dividends, financial return, appreciation, escrow, insurance, governance rights, or claim on Bestie or its assets. Payments are not represented as charitable donations or tax-deductible.</p>
+    </aside>
   </main>
+
+  <footer class="foot">
+    <p class="kicker invert"><span class="dot" aria-hidden="true"></span> BESTIE</p>
+    <div class="foot-row">
+      <p class="foot-title">Keep showing up. We'll meet you there.</p>
+      <a class="btn btn-raised" href="#founding-access">Join founding access</a>
+    </div>
+  </footer>
+
   <script src="form.js"></script>
+  <script src="motion.js" defer></script>
 </body>
 </html>
