@@ -2,13 +2,23 @@
 
 This branch is a **preview-only** replacement landing page. It is not a production publish.
 
-## HOLD — do not recapture as a pass
+## HOLD — wait for a confirmed matching hero file
 
-Designer rejected the current in-app component UI: hero phone chrome, cards, nav, and chips. That hero phone is **not done**. Do not recapture 1440/390 as a Designer pass. Do not treat existing captures as a pass. Wait for Designer to replace visual/app plus the hero phone.
+Do not recapture. Do not implement `70e2b2d6…` (Designer: stale). Do not implement the current on-disk `assets/scene-hero.png` until Designer confirms a matching hash. No deploy.
+
+Hero file hashes that do **not** match each other:
+
+| Source | SHA-256 |
+| --- | --- |
+| Designer stated lock | `adf9c5863c71dfe6c1b003347274d373d566f56a83597e6772fd04a8c1dfd3de` |
+| Hashed by CEO on their disk | `bf3c2a95becf25a213819b296aafc63de01809590da24671ded82c9bfa7f1eec` |
+| This VM after pull (`assets/scene-hero.png`) | `70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737` (stale; do not implement) |
+
+Wait for a confirmed matching hero file.
 
 Still locked and now on disk:
 
-- Scene art: `scene-hero.png`, `scene-founding-access.png`, `scene-open-source-proof.png`
+- Founding and artifact scene art
 - Real Sassy cutout: `sassy-center-transparent.png` (source lock `companion-sassy.png`)
 
 No replacement character was invented. GitHub Pages and production were not changed. No deploy.
@@ -39,7 +49,7 @@ Do **not** run `npm run capture` for a pass until Designer replaces the hero pho
 | --- | --- |
 | `assets/sassy-center-transparent.png` | `1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f` |
 | `assets/companion-sassy.png` | `5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f` |
-| `assets/scene-hero.png` | `96a9d37e556fc30162f83adfa4bf83fa83abe330c63ac1d4cb10e9f9084064fd` |
+| `assets/scene-hero.png` | **unconfirmed** — see HOLD hashes above |
 | `assets/scene-founding-access.png` | `5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699` |
 | `assets/scene-open-source-proof.png` | `448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573` |
 
@@ -49,7 +59,7 @@ Hero, founding, and artifact place the real cutout. Phone z-index stays above Sa
 
 ### Designer visual/app and hero phone
 
-Designer will replace visual/app plus the hero phone. Attachment history: earlier chat attachments arrived as descriptions, not persistable bytes. The five locked files are now in `assets/` on this branch.
+Wait for a confirmed matching hero file before implementing Today chrome. Attachment history: earlier chat attachments arrived as descriptions, not persistable bytes. Founding, artifact, and Sassy locks remain on disk. `scene-hero.png` is unconfirmed.
 
 ### Analytics
 

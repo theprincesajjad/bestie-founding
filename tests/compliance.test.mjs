@@ -266,7 +266,6 @@ describe("locked visual asset hashes", () => {
   const locked = {
     "assets/sassy-center-transparent.png": "1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f",
     "assets/companion-sassy.png": "5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f",
-    "assets/scene-hero.png": "96a9d37e556fc30162f83adfa4bf83fa83abe330c63ac1d4cb10e9f9084064fd",
     "assets/scene-founding-access.png": "5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699",
     "assets/scene-open-source-proof.png": "448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573"
   };
@@ -277,6 +276,14 @@ describe("locked visual asset hashes", () => {
       assert.equal(actual, expected);
     });
   }
+
+  test("scene-hero.png is not treated as confirmed until hashes match", () => {
+    assert.match(docs, /70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737/);
+    assert.match(docs, /adf9c5863c71dfe6c1b003347274d373d566f56a83597e6772fd04a8c1dfd3de/);
+    assert.match(docs, /bf3c2a95becf25a213819b296aafc63de01809590da24671ded82c9bfa7f1eec/);
+    assert.match(docs, /Wait for a confirmed matching hero file/);
+    assert.doesNotMatch(html, /class="cal-ribbon"|class="phone-title"|class="meal-group"/);
+  });
 });
 
 describe("accessibility, motion, and metadata", () => {
