@@ -38,7 +38,7 @@ function shot(width, height, name) {
   if (existsSync(dest)) rmSync(dest);
   if (existsSync(tmp)) rmSync(tmp);
   const result = spawnSync("timeout", [
-    "20",
+    "60",
     "google-chrome-stable",
     "--headless=old",
     "--no-sandbox",

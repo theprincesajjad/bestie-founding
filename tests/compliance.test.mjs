@@ -95,6 +95,37 @@ describe("product founding access waitlist", () => {
     assert.doesNotMatch(hero, /See how it works/);
   });
 
+  test("desktop hero keeps Lose the guilt trip. on one line", () => {
+    const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
+    assert.match(
+      hero,
+      /<span class="hero-line">Lose the <span class="guilt">guilt trip\.<\/span><\/span>/
+    );
+    assert.match(css, /\.hero-line\s*\{[^}]*white-space:\s*nowrap/);
+    assert.match(css, /\.hero h1(?:\.serif-title)?[\s\S]*?font-size:\s*clamp\(/);
+    assert.match(css, /\.hero\s*\{[^}]*grid-template-columns:\s*minmax\([^)]+\)\s+minmax\(/);
+  });
+
+  test("mobile first screen places the full Sassy cutout in the world", () => {
+    const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
+    const visual = hero.slice(hero.indexOf('class="hero-visual"'));
+    assert.ok(
+      visual.indexOf("sassy-hero") < visual.indexOf("phone-stage"),
+      "full Sassy cutout must precede the phone so she is above the fold"
+    );
+    assert.match(visual, /class="sassy-img sassy-hero"[^>]+sassy-center-transparent\.png/);
+    assert.match(
+      css,
+      /@media \(max-width: 600px\)[\s\S]*\.sassy-hero[\s\S]*height:\s*(3[6-9]\d|[4-9]\d{2})px/
+    );
+    assert.doesNotMatch(
+      css,
+      /@media \(max-width: 600px\)[\s\S]*\.sassy-hero[\s\S]*max-width:\s*150px/
+    );
+    assert.match(css, /\.phone-stage[\s\S]*z-index:\s*3/);
+    assert.match(css, /\.sassy-hero[\s\S]*z-index:\s*2/);
+  });
+
   test("hero phone uses the frozen scene-hero-locked Today chrome", () => {
     const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
     assert.match(hero, /Hey you/);
@@ -313,7 +344,8 @@ describe("locked visual asset hashes", () => {
     assert.match(docs, /70e2b2d6/);
     assert.match(docs, /adf9c586/);
     assert.match(docs, /36df4e56/);
-    assert.match(docs, /Recapture is still held/);
+    assert.match(docs, /41a8ba98e03c7132d4ee1f162cd46a35214a0d5b0ad67c0ed67bf1c0c238474b/);
+    assert.match(docs, /789f32e70b1ab0d56528b7b29e9c933c6a63d1b2743884f034a17a2b64749e60/);
     const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
     assert.match(hero, /sassy-center-transparent\.png/);
     assert.doesNotMatch(hero, /scene-hero\.png/);

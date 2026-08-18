@@ -4,13 +4,13 @@ This branch is a **preview-only** replacement landing page. It is not a producti
 
 ## Frozen hero lock
 
-Hero is frozen on `assets/scene-hero-locked.png` SHA-256 `4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25` only. Ignore `70e2b2d6…`, `adf9c586…`, and `36df4e56…`. Ignore `scene-hero.png` if it keeps changing. Recapture is still held. Do not capture or send 1440/390 yet. No deploy.
+Hero is frozen on `assets/scene-hero-locked.png` SHA-256 `4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25` only. Ignore `70e2b2d6…`, `adf9c586…`, and `36df4e56…`. Ignore `scene-hero.png` if it keeps changing. No deploy.
 
 The landing-page hero phone is the in-progress Today chrome from that frozen file. Real Sassy in the world uses the committed transparent cutout. Founding and artifact scenes are unchanged.
 
 No replacement character was invented. GitHub Pages and production were not changed. No deploy.
 
-Recapture is still held. Do not send 1440/390 yet. Do not resubmit `92f41df…`, `bb748ce…`, `0b57a55…`, or `890622a…`.
+Do not resubmit `92f41df…`, `bb748ce…`, `0b57a55…`, or `890622a…`.
 
 ## Local preview
 
@@ -28,7 +28,14 @@ npm run lint
 npm run build
 ```
 
-Recapture is still held. Do not run `npm run capture` or send 1440/390 until Designer asks. Ignore `scene-hero.png`.
+Live-page captures after the Designer FAIL fix. 1440 keeps `Lose the guilt trip.` on one line. 390 puts the full Sassy cutout in the first screen. Checkout stays off. No deploy.
+
+| File | SHA-256 |
+| --- | --- |
+| `artifacts/desktop-1440.png` | `41a8ba98e03c7132d4ee1f162cd46a35214a0d5b0ad67c0ed67bf1c0c238474b` |
+| `artifacts/mobile-390.png` | `789f32e70b1ab0d56528b7b29e9c933c6a63d1b2743884f034a17a2b64749e60` |
+
+Also `artifacts/captures/` and `/opt/cursor/artifacts/screenshots/`. Ignore `scene-hero.png`.
 
 ## Locked assets (hashed after pull)
 
