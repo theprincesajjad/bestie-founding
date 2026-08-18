@@ -281,6 +281,8 @@ describe("locked visual asset hashes", () => {
     assert.match(docs, /70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737/);
     assert.match(docs, /adf9c5863c71dfe6c1b003347274d373d566f56a83597e6772fd04a8c1dfd3de/);
     assert.match(docs, /bf3c2a95becf25a213819b296aafc63de01809590da24671ded82c9bfa7f1eec/);
+    assert.match(docs, /36df4e56b8d50285116e3e1039e9df4f0d6454ebed9cfa8341f7bee266f21483/);
+    assert.match(docs, /one frozen hash/);
     assert.match(docs, /Wait for a confirmed matching hero file/);
     assert.doesNotMatch(html, /class="cal-ribbon"|class="phone-title"|class="meal-group"/);
   });

@@ -2,17 +2,18 @@
 
 This branch is a **preview-only** replacement landing page. It is not a production publish.
 
-## HOLD — wait for a confirmed matching hero file
+## HOLD — wait for one frozen hero hash
 
-Do not recapture. Do not implement `70e2b2d6…` (Designer: stale). Do not implement the current on-disk `assets/scene-hero.png` until Designer confirms a matching hash. No deploy.
+Do not recapture. Do not chase a moving `scene-hero.png`. No deploy. Implement Today chrome only after CEO/Designer confirm **one frozen hash**.
 
-Hero file hashes that do **not** match each other:
+Do not implement any of these moving or stale hashes:
 
-| Source | SHA-256 |
+| Note | SHA-256 |
 | --- | --- |
-| Designer stated lock | `adf9c5863c71dfe6c1b003347274d373d566f56a83597e6772fd04a8c1dfd3de` |
-| Hashed by CEO on their disk | `bf3c2a95becf25a213819b296aafc63de01809590da24671ded82c9bfa7f1eec` |
-| This VM after pull (`assets/scene-hero.png`) | `70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737` (stale; do not implement) |
+| Previously stated Designer lock (not frozen here) | `adf9c5863c71dfe6c1b003347274d373d566f56a83597e6772fd04a8c1dfd3de` |
+| `bf3c2a95…` — no longer on disk; do not implement | `bf3c2a95becf25a213819b296aafc63de01809590da24671ded82c9bfa7f1eec` |
+| CEO current on-disk hash — do not implement until frozen | `36df4e56b8d50285116e3e1039e9df4f0d6454ebed9cfa8341f7bee266f21483` |
+| This VM after pull (`70e2b2d6…`) — Designer: stale; do not implement | `70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737` |
 
 Wait for a confirmed matching hero file.
 
@@ -59,7 +60,7 @@ Hero, founding, and artifact place the real cutout. Phone z-index stays above Sa
 
 ### Designer visual/app and hero phone
 
-Wait for a confirmed matching hero file before implementing Today chrome. Attachment history: earlier chat attachments arrived as descriptions, not persistable bytes. Founding, artifact, and Sassy locks remain on disk. `scene-hero.png` is unconfirmed.
+Wait for CEO/Designer to confirm one frozen hero hash before implementing Today chrome. Do not implement `bf3c2a95…` (gone) or `36df4e56…` (unfrozen). Attachment history: earlier chat attachments arrived as descriptions, not persistable bytes. Founding, artifact, and Sassy locks remain on disk. `scene-hero.png` is unconfirmed.
 
 ### Analytics
 
