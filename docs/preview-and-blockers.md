@@ -63,7 +63,7 @@ The existing `formsubmit.co` AJAX endpoint and inbox already in `form.js` are pr
 
 ### Price and tier brief
 
-Supporter public copy is the CEO block only. Informational CA$5 / CA$15 / CA$50 amounts are shown with enrollment disabled. No Founding Builder, no C$35, no Member or partner status label.
+The cream founding invitation card shows the locked informational amounts CA$5 / CA$15 / CA$50. Those prices are information only; supporter enrollment is disabled. Do not say pricing is unlocked or “shared only when locked.” No Founding Builder, no C$35, no Member or partner status label.
 
 ### GitHub Pages / production
 

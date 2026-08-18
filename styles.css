@@ -484,6 +484,8 @@ main > aside { padding: 4.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2)
   border-radius: var(--radius);
   padding: 1.4rem 1.35rem 1.5rem;
 }
+.access-card .info-tiers { margin: 0 0 1.1rem; }
+.access-card .info-tiers article { background: var(--raised); }
 .access-note { color: var(--dim); margin: 0 0 1.1rem; font-size: 0.95rem; }
 label { display: block; margin: 0 0 0.35rem; font-size: 0.86rem; color: var(--dim); }
 input[type="text"],

@@ -41,7 +41,9 @@ describe("forbidden claims and theater", () => {
     "C$35",
     "open-source project",
     "Bestie is an open-source project",
-    "Help steward Bestie in the open"
+    "Help steward Bestie in the open",
+    "Founding pricing shared only when it is actually locked",
+    "Founding pricing shared only when locked"
   ];
 
   for (const phrase of forbidden) {
@@ -98,7 +100,8 @@ describe("product founding access waitlist", () => {
       html,
       /Get early access to the working product\. Give feedback on tone and recovery copy\./
     );
-    assert.match(html, /Amounts are not shown here\./);
+    assert.doesNotMatch(html, /Amounts are not shown here/);
+    assert.doesNotMatch(html, /Founding pricing shared only when/i);
     assert.match(html, /No payment today\. Not equity\. No fake exclusivity\./);
     assert.match(html, /You’re on the founding access list\./);
     assert.match(html, /<form[^>]+id="founding-access-form"/);
@@ -106,6 +109,18 @@ describe("product founding access waitlist", () => {
     assert.match(html, /<label for="email">Email<\/label>/);
     assert.match(html, /I am 18 or older/);
     assert.match(html, /Join founding access/);
+  });
+
+  test("cream invitation card shows the locked informational prices", () => {
+    const cardStart = html.indexOf('class="access-card"');
+    const card = html.slice(cardStart, html.indexOf("</section>", html.indexOf('id="founding-access"')));
+    assert.match(card, /CA\$5 \/ month — Founding Supporter/);
+    assert.match(card, /CA\$15 \/ month — Founding Circle/);
+    assert.match(card, /CA\$50 \/ month — Founding Steward/);
+    assert.match(card, /These prices are information only/);
+    assert.match(card, /Enrollment is disabled/);
+    assert.doesNotMatch(card, /Founding pricing shared only when/i);
+    assert.doesNotMatch(card, /Amounts are not shown here/);
   });
 
   test("waitlist is not labeled as supporter enrollment", () => {
