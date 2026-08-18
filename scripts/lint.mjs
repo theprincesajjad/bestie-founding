@@ -15,7 +15,6 @@ const required = [
   "assets/scene-hero.png",
   "assets/scene-hero-locked.png",
   "assets/scene-founding-access.png",
-  "assets/scene-open-source-proof.png",
   "docs/preview-and-blockers.md"
 ];
 
@@ -40,7 +39,6 @@ const forbidden = [
   "C$35",
   "if you fit",
   "We will not take everyone",
-  "open-source project",
   "Help steward Bestie in the open",
   "source publication pending"
 ];
@@ -48,6 +46,12 @@ const forbidden = [
 const hits = forbidden.filter((phrase) => published.toLowerCase().includes(phrase.toLowerCase()));
 if (hits.length) {
   console.error("Forbidden strings:", hits.join(", "));
+  process.exit(1);
+}
+
+const ossRe = new RegExp(["open", "source"].join("[\\s-]"), "i");
+if (ossRe.test(published)) {
+  console.error("Forbidden OSS phrasing present");
   process.exit(1);
 }
 

@@ -15,6 +15,7 @@ const docs = existsSync(join(root, "docs/preview-and-blockers.md"))
   : "";
 const published = [html, css, js].join("\n");
 const allText = [published, readme, docs].join("\n");
+const ossRe = new RegExp(["open", "source"].join("[\\s-]"), "i");
 
 function count(haystack, needle) {
   return haystack.split(needle).length - 1;
@@ -27,9 +28,6 @@ describe("forbidden claims and theater", () => {
     "Founding access opening soon",
     "Opening soon",
     "A small early cohort",
-    "Bestie is open source",
-    "Bestie is an open-source project",
-    "Bestie is an open source",
     "foundation",
     "Founding Girls",
     "Ask to be on the list",
@@ -40,8 +38,6 @@ describe("forbidden claims and theater", () => {
     "C$5",
     "C$15",
     "C$35",
-    "open-source project",
-    "Bestie is an open-source project",
     "Help steward Bestie in the open",
     "Founding pricing shared only when it is actually locked",
     "Founding pricing shared only when locked"
@@ -64,13 +60,12 @@ describe("forbidden claims and theater", () => {
     assert.doesNotMatch(html, /href=["'][^"']*(checkout|paypal|stripe|ko-fi)/i);
     assert.doesNotMatch(html, /\bMember\b|\bMembers\b/);
     assert.doesNotMatch(html, /Help steward Bestie in the open/i);
-    assert.doesNotMatch(html, /open-source project/i);
   });
 
-  test("does not claim current open-source status", () => {
-    assert.match(html, /Bestie is not open source today/);
-    assert.match(html, /Bestie is being prepared for an open-source release/);
-    assert.doesNotMatch(html, /Bestie is open source/i);
+  test("does not claim any current or pending source-release status", () => {
+    assert.doesNotMatch(html, ossRe);
+    assert.doesNotMatch(css, ossRe);
+    assert.doesNotMatch(js, ossRe);
   });
 
   test("does not use selection or scarcity theater", () => {
@@ -208,7 +203,7 @@ describe("Bestie Founding Supporter section", () => {
     assert.ok(count(html, "Bestie Founding Supporter") >= 1);
     assert.doesNotMatch(html, /Founding Partner|founding member/i);
     assert.match(html, /<h2 id="supporter-title">Bestie Founding Supporter<\/h2>/);
-    assert.match(html, /Bestie is being prepared for an open-source release\./);
+    assert.match(html, /Community support for a private product\./);
     assert.match(html, /Enrollment is disabled\./);
     assert.match(html, /These prices are information only\./);
     assert.match(html, /id="supporter-cta"[^>]*disabled/);
@@ -264,10 +259,7 @@ describe("product scenes and construction locks", () => {
       "Bestie tells the truth without turning one dinner into a three-day disappearance. No punishment workout. No apology. Just the next meal.",
       "Progress without the lecture.",
       "A one-minute check-in, soft consistency, optional weight, and one useful focus for next week. Private by default.",
-      "Keep showing up. We'll meet you there.",
-      "Show the girl. Skip the star theater.",
-      "The repo is private and being prepared for an open-source release.",
-      "Being prepared for an open-source release."
+      "Keep showing up. We'll meet you there."
     ];
     for (const line of lines) {
       assert.match(html, new RegExp(line.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
@@ -283,31 +275,18 @@ describe("product scenes and construction locks", () => {
     assert.match(scene6, /sassy-center-transparent\.png/);
   });
 
-  test("artifact facts are limited to verified local values", () => {
-    assert.match(html, /Companion\.usdz/);
-    assert.match(html, /835,441 bytes/);
-    assert.match(html, /defaultPrim/);
-    assert.match(html, /\/Companion/);
-    assert.match(html, /cab2d50c30a20cb307268992ea3713ae99c3d27c42205c0c85df0d16da3b1e59/);
-    assert.doesNotMatch(html, /stargazers|contributors|MIT License|github.com\/.*\/blob/i);
-    assert.doesNotMatch(html, /class="code"|def Xform/);
-  });
-
   test("places the approved Sassy crop and does not ship a CSS stand-in", () => {
     assert.match(html, /assets\/sassy-center-transparent\.png/);
     assert.doesNotMatch(css, /radial-gradient\(circle at 50% 18%/);
     assert.doesNotMatch(html, /CSS brand figure|sassy sassy-hero|sassy sassy-lg/);
   });
 
-  test("hero, founding, and artifact use the real Sassy cutout", () => {
+  test("hero and founding use the real Sassy cutout", () => {
     const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
-    const artifact = html.slice(html.indexOf('id="artifact"'), html.indexOf('id="founding-access"'));
     const founding = html.slice(html.indexOf('id="founding-access"'), html.indexOf('id="supporter"'));
     assert.match(hero, /assets\/sassy-center-transparent\.png/);
-    assert.match(artifact, /assets\/sassy-center-transparent\.png/);
     assert.match(founding, /assets\/sassy-center-transparent\.png/);
     assert.match(hero, /class="sassy-img sassy-hero"/);
-    assert.match(artifact, /class="sassy-img sassy-artifact"/);
     assert.match(founding, /class="sassy-img sassy-lg"/);
     assert.match(css, /\.phone-stage[\s\S]*z-index:\s*3/);
     assert.match(css, /\.sassy-hero[\s\S]*z-index:\s*2/);
@@ -326,8 +305,7 @@ describe("locked visual asset hashes", () => {
     "assets/sassy-center-transparent.png": "1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f",
     "assets/companion-sassy.png": "5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f",
     "assets/scene-hero-locked.png": "4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25",
-    "assets/scene-founding-access.png": "5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699",
-    "assets/scene-open-source-proof.png": "448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573"
+    "assets/scene-founding-access.png": "5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699"
   };
 
   for (const [rel, expected] of Object.entries(locked)) {

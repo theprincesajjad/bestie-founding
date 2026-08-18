@@ -6,7 +6,7 @@ This branch is a **preview-only** replacement landing page. It is not a producti
 
 Hero is frozen on `assets/scene-hero-locked.png` SHA-256 `4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25` only. Ignore `70e2b2d6…`, `adf9c586…`, and `36df4e56…`. Ignore `scene-hero.png` if it keeps changing. No deploy.
 
-The landing-page hero phone is the in-progress Today chrome from that frozen file. Real Sassy in the world uses the committed transparent cutout. Founding and artifact scenes are unchanged.
+The landing-page hero phone is the in-progress Today chrome from that frozen file. Real Sassy in the world uses the committed transparent cutout. Founding scene is unchanged.
 
 No replacement character was invented. GitHub Pages and production were not changed. No deploy.
 
@@ -46,9 +46,8 @@ Also `artifacts/captures/` and `/opt/cursor/artifacts/screenshots/`. Ignore `sce
 | `assets/scene-hero-locked.png` | `4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25` |
 | `assets/scene-hero.png` | **ignored if it keeps changing** |
 | `assets/scene-founding-access.png` | `5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699` |
-| `assets/scene-open-source-proof.png` | `448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573` |
 
-Hero, founding, and artifact place the real cutout. Phone z-index stays above Sassy so meal names and remaining calories stay readable.
+Hero and founding place the real cutout. Phone z-index stays above Sassy so meal names and remaining calories stay readable.
 
 ## Blockers
 
