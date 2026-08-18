@@ -4,20 +4,13 @@ This branch is a **preview-only** replacement landing page. It is not a producti
 
 ## Frozen hero lock
 
-Hero is frozen on `assets/scene-hero-locked.png` SHA-256 `4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25`. Ignore `scene-hero.png` if it keeps changing. Do not implement moving or stale `scene-hero.png` hashes. No deploy.
+Hero is frozen on `assets/scene-hero-locked.png` SHA-256 `4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25` only. Ignore `70e2b2d6…`, `adf9c586…`, and `36df4e56…`. Ignore `scene-hero.png` if it keeps changing. Recapture is still held. Do not capture or send 1440/390 yet. No deploy.
 
 The landing-page hero phone is the in-progress Today chrome from that frozen file. Real Sassy in the world uses the committed transparent cutout. Founding and artifact scenes are unchanged.
 
 No replacement character was invented. GitHub Pages and production were not changed. No deploy.
 
-New captures after the frozen hero chrome was on the live page:
-
-| File | SHA-256 |
-| --- | --- |
-| `artifacts/desktop-1440.png` | `83f7d8e8820175953ad03863f79d7b11a1016ddaf5c1cb6bdcdd5b191ba0e5fe` |
-| `artifacts/mobile-390.png` | `bca8e2f2df951c394ff6fd4b4d49a85ca6a86702d19ab2afa3b978e4be4c79af` |
-
-Do not resubmit `92f41df…`, `bb748ce…`, `0b57a55…`, or `890622a…`.
+Recapture is still held. Do not send 1440/390 yet. Do not resubmit `92f41df…`, `bb748ce…`, `0b57a55…`, or `890622a…`.
 
 ## Local preview
 
@@ -35,7 +28,7 @@ npm run lint
 npm run build
 ```
 
-`npm run capture` is for landing-page proof that the frozen hero phone chrome is on the live page. It is not a product-UI pass. Ignore `scene-hero.png`.
+Recapture is still held. Do not run `npm run capture` or send 1440/390 until Designer asks. Ignore `scene-hero.png`.
 
 ## Locked assets (hashed after pull)
 

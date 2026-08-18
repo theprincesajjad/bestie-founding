@@ -310,6 +310,10 @@ describe("locked visual asset hashes", () => {
     assert.match(docs, /4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25/);
     assert.match(docs, /scene-hero-locked\.png/);
     assert.match(docs, /Ignore [`']?scene-hero\.png/);
+    assert.match(docs, /70e2b2d6/);
+    assert.match(docs, /adf9c586/);
+    assert.match(docs, /36df4e56/);
+    assert.match(docs, /Recapture is still held/);
     const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
     assert.match(hero, /sassy-center-transparent\.png/);
     assert.doesNotMatch(hero, /scene-hero\.png/);
