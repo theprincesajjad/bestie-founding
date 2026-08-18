@@ -95,6 +95,34 @@ describe("product founding access waitlist", () => {
     assert.doesNotMatch(hero, /See how it works/);
   });
 
+  test("hero phone uses the frozen scene-hero-locked Today chrome", () => {
+    const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
+    assert.match(hero, /Hey you/);
+    assert.match(hero, /Lunch is logged\. Organized girl behavior\./);
+    assert.match(hero, /class="cal-ribbon"/);
+    assert.match(hero, />940</);
+    assert.match(hero, /calories left · example day/);
+    assert.match(hero, /class="meals-label">MEALS</);
+    assert.match(hero, /Oats, banana/);
+    assert.match(hero, />360</);
+    assert.match(hero, /Chicken grain bowl/);
+    assert.match(hero, />500</);
+    assert.match(hero, /4 days showed up this week/);
+    assert.match(hero, /class="phone-tabs"/);
+    assert.match(hero, />Today</);
+    assert.match(hero, />Cravings</);
+    assert.match(hero, />Progress</);
+    assert.match(hero, /class="plus"/);
+    assert.match(hero, /Mon 17/);
+    assert.doesNotMatch(hero, /1,120/);
+    assert.doesNotMatch(hero, /Greek yogurt/);
+    assert.doesNotMatch(hero, /Chicken wrap/);
+    assert.doesNotMatch(hero, /Almond latte/);
+    assert.doesNotMatch(hero, /Your day is still yours/);
+    const logs = hero.split('class="meal-log">Log<').length - 1;
+    assert.equal(logs, 2);
+  });
+
   test("header is wordmark only with no capsule nav", () => {
     assert.match(html, /class="wordmark"/);
     assert.doesNotMatch(html, /class="nav-links"/);
@@ -266,6 +294,7 @@ describe("locked visual asset hashes", () => {
   const locked = {
     "assets/sassy-center-transparent.png": "1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f",
     "assets/companion-sassy.png": "5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f",
+    "assets/scene-hero-locked.png": "4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25",
     "assets/scene-founding-access.png": "5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699",
     "assets/scene-open-source-proof.png": "448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573"
   };
@@ -277,14 +306,13 @@ describe("locked visual asset hashes", () => {
     });
   }
 
-  test("scene-hero.png is not treated as confirmed until hashes match", () => {
-    assert.match(docs, /70e2b2d6610cf268d95eea9d400002f7540709d70e5465e62285c7df33863737/);
-    assert.match(docs, /adf9c5863c71dfe6c1b003347274d373d566f56a83597e6772fd04a8c1dfd3de/);
-    assert.match(docs, /bf3c2a95becf25a213819b296aafc63de01809590da24671ded82c9bfa7f1eec/);
-    assert.match(docs, /36df4e56b8d50285116e3e1039e9df4f0d6454ebed9cfa8341f7bee266f21483/);
-    assert.match(docs, /one frozen hash/);
-    assert.match(docs, /Wait for a confirmed matching hero file/);
-    assert.doesNotMatch(html, /class="cal-ribbon"|class="phone-title"|class="meal-group"/);
+  test("implements scene-hero-locked.png and ignores moving scene-hero.png", () => {
+    assert.match(docs, /4388d49871a6bf9b3a68bf9b5ca11b7a47cfd35edd038232b4961f54a72abc25/);
+    assert.match(docs, /scene-hero-locked\.png/);
+    assert.match(docs, /Ignore [`']?scene-hero\.png/);
+    const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
+    assert.match(hero, /sassy-center-transparent\.png/);
+    assert.doesNotMatch(hero, /scene-hero\.png/);
   });
 });
 

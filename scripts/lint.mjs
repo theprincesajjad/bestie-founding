@@ -13,6 +13,7 @@ const required = [
   "assets/sassy-center-transparent.png",
   "assets/companion-sassy.png",
   "assets/scene-hero.png",
+  "assets/scene-hero-locked.png",
   "assets/scene-founding-access.png",
   "assets/scene-open-source-proof.png",
   "docs/preview-and-blockers.md"
