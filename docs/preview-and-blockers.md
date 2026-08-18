@@ -10,7 +10,14 @@ The landing-page hero phone is the in-progress Today chrome from that frozen fil
 
 No replacement character was invented. GitHub Pages and production were not changed. No deploy.
 
-Existing captures `0b57a55…` and `890622a…` remain FAIL and must not be resubmitted. Also do not resubmit `92f41df…` or `bb748ce…`.
+New captures after the frozen hero chrome was on the live page:
+
+| File | SHA-256 |
+| --- | --- |
+| `artifacts/desktop-1440.png` | `83f7d8e8820175953ad03863f79d7b11a1016ddaf5c1cb6bdcdd5b191ba0e5fe` |
+| `artifacts/mobile-390.png` | `bca8e2f2df951c394ff6fd4b4d49a85ca6a86702d19ab2afa3b978e4be4c79af` |
+
+Do not resubmit `92f41df…`, `bb748ce…`, `0b57a55…`, or `890622a…`.
 
 ## Local preview
 
