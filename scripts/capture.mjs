@@ -30,7 +30,7 @@ const server = createServer((req, res) => {
   }
 });
 
-await new Promise((resolve) => server.listen(4173, "127.0.0.1", resolve));
+await new Promise((resolve) => server.listen(4174, "127.0.0.1", resolve));
 
 function shot(width, height, name) {
   const dest = join(outDir, name);
@@ -44,7 +44,7 @@ function shot(width, height, name) {
     `--window-size=${width},${height}`,
     "--virtual-time-budget=12000",
     `--screenshot=${dest}`,
-    "http://127.0.0.1:4173/"
+    "http://127.0.0.1:4174/"
   ], { encoding: "utf8" });
   if (result.status !== 0 || !existsSync(dest) || statSync(dest).size < 1000) {
     console.error(result.stderr || result.stdout);
@@ -54,6 +54,12 @@ function shot(width, height, name) {
   console.log(`${dest} (${statSync(dest).size} bytes)`);
 }
 
-shot(1440, 8200, "desktop-1440.png");
-shot(390, 14000, "mobile-390.png");
+shot(1440, 9200, "desktop-1440.png");
+shot(390, 15500, "mobile-390.png");
+for (const name of ["desktop-1440.png", "mobile-390.png"]) {
+  const dest = join(outDir, name);
+  const captures = join(outDir, "captures");
+  mkdirSync(captures, { recursive: true });
+  copyFileSync(dest, join(captures, name));
+}
 server.close();

@@ -21,8 +21,8 @@ npm run capture
 
 Rendered captures (after `npm run capture`) land in `artifacts/`:
 
-- `artifacts/desktop-1440.png` (1440×8200)
-- `artifacts/mobile-390.png` (390×14000)
+- `artifacts/desktop-1440.png` (1440×9200)
+- `artifacts/mobile-390.png` (390×15500)
 
 OCR of those captures must show the truth line “being prepared for an open-source release”, the label “Bestie Founding Supporter”, and the informational amounts CA$5, CA$15, and CA$50. It must not find vote, Member, “open-source project”, “Help steward Bestie in the open”, “source publication pending”, C$5 / C$15 / C$35, or Founding Builder.
 
