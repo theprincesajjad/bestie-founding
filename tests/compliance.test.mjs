@@ -36,9 +36,6 @@ describe("forbidden claims and theater", () => {
     "A vote on tone and recovery copy",
     "source publication pending",
     "Founding Builder",
-    "Founding Steward",
-    "C$5",
-    "C$15",
     "C$35",
     "open-source project",
     "Bestie is an open-source project",
@@ -57,8 +54,7 @@ describe("forbidden claims and theater", () => {
 
   test("does not invent numeric prices or checkout", () => {
     assert.match(html, /Founding pricing will be shared only when it is actually locked/);
-    assert.doesNotMatch(published, /\$\d/);
-    assert.doesNotMatch(published, /\d+\s*(CAD|USD|EUR)/i);
+    assert.doesNotMatch(published, /C\$35|CA\$35/);
     assert.doesNotMatch(published, /stripe\.com|buy now|subscribe now/i);
     assert.doesNotMatch(html, /href=["'][^"']*(checkout|paypal|stripe|ko-fi)/i);
     assert.doesNotMatch(html, /\bMember\b|\bMembers\b/);
@@ -126,39 +122,24 @@ describe("Bestie Founding Supporter section", () => {
   test("uses the exact supporter label and disabled CTA", () => {
     assert.ok(count(html, "Bestie Founding Supporter") >= 1);
     assert.doesNotMatch(html, /Founding Partner|founding member/i);
-    assert.match(html, /Support Bestie from the beginning\./);
-    assert.match(
-      html,
-      /Bestie is a calorie tracker that talks like a friend\. Bestie Founding Supporters help fund the work while the project is prepared for an open-source release\./
-    );
-    assert.match(html, /Founding support is not open yet/);
-    assert.match(html, /Prices are not set\. Enrollment is disabled\./);
+    assert.match(html, /<h2 id="supporter-title">Bestie Founding Supporter<\/h2>/);
+    assert.match(html, /Bestie is being prepared for an open-source release\./);
+    assert.match(html, /Enrollment is disabled\./);
+    assert.match(html, /These prices are information only\./);
     assert.match(html, /id="supporter-cta"[^>]*disabled/);
+    assert.doesNotMatch(html, /id="supporter-form"|href=["'][^"']*enroll/i);
   });
 
-  test("lists what support funds without allocation promises", () => {
-    for (const item of [
-      "Product development",
-      "Documentation and release preparation",
-      "Security and maintenance",
-      "Community operations"
-    ]) {
-      assert.match(html, new RegExp(item));
-    }
+  test("lists only the locked informational amounts", () => {
+    assert.match(html, /CA\$5 \/ month — Founding Supporter/);
+    assert.match(html, /Project updates\. Supporter badge\./);
+    assert.match(html, /CA\$15 \/ month — Founding Circle/);
+    assert.match(html, /Everything in Founding Supporter, plus optional public name listing with consent, and early notices about public builds\./);
+    assert.match(html, /CA\$50 \/ month — Founding Steward/);
+    assert.match(html, /Everything in Founding Circle, plus roadmap feedback sessions \/ submit feedback\./);
+    assert.match(html, /Feedback is explicitly non-binding and provides no authority\./);
+    assert.doesNotMatch(html, /C\$35|Founding Builder/);
     assert.doesNotMatch(html, /\d+%/);
-  });
-
-  test("lists supporter benefits without control or ownership", () => {
-    for (const item of [
-      "Bestie project updates",
-      "supporter badge",
-      "optional public name listing",
-      "Group feedback sessions",
-      "early notice of public builds"
-    ]) {
-      assert.match(html, new RegExp(item, "i"));
-    }
-    assert.match(html, /no control or decision authority/);
   });
 
   test("ledger is labeled and empty", () => {

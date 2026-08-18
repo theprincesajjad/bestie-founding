@@ -32,7 +32,9 @@ No GitHub Pages settings were changed. Pages was already unset on this repositor
 
 ### Designer source images were not on disk
 
-Designer signed `/workspace/studio/bestie/visual/web/scene-founding-access.png`. That path, and the other studio visual paths below, were **not present** in this environment, so the signed bytes could not be copied into the build:
+Designer source is independently vote-clean and may be used again. In this environment the studio mount is still missing, so those files could not be opened or copied. The built founding-access line remains “Give feedback on tone and recovery copy.”
+
+Designer signed `/workspace/studio/bestie/visual/web/scene-founding-access.png`. That path, and the other studio visual paths below, were **not present** here:
 
 - `/workspace/studio/bestie/visual/web/desktop-landing-1440.png`
 - `/workspace/studio/bestie/visual/web/mobile-landing-390.png`
@@ -61,7 +63,7 @@ The existing `formsubmit.co` AJAX endpoint and inbox already in `form.js` are pr
 
 ### Price and tier brief
 
-No price or tier brief was used as a source. No C$ amounts, no Founding Builder / Founding Steward names, no numbered tiers, and no Member or partner status label.
+Supporter public copy is the CEO block only. Informational CA$5 / CA$15 / CA$50 amounts are shown with enrollment disabled. No Founding Builder, no C$35, no Member or partner status label.
 
 ### GitHub Pages / production
 

@@ -527,14 +527,19 @@ input[type="email"] {
 
 .supporter { background: var(--cream); }
 .lede { max-width: 42rem; color: var(--dim); }
-.support-grid {
+.info-tiers {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: 2.2rem 0 2.5rem;
+  gap: 1rem;
+  margin: 1.8rem 0 1.6rem;
 }
-.plain-list { margin: 0; padding: 0 0 0 1.1rem; }
-.plain-list li { margin: 0 0 0.45rem; }
+.info-tiers article {
+  background: var(--raised);
+  border: 1px solid var(--hair);
+  border-radius: 22px;
+  padding: 1.1rem 1.2rem;
+}
+.info-tiers h3 { margin-bottom: 0.4rem; }
+.info-tiers p { margin: 0; color: var(--dim); }
 .ledger {
   background: var(--raised);
   border: 1px solid var(--hair);
@@ -665,7 +670,7 @@ th { color: var(--dim); font-weight: 500; }
   .nav-links { justify-content: space-between; gap: 0.6rem; font-size: 0.88rem; }
   .nav-actions { justify-content: stretch; }
   .nav-actions .btn { flex: 1; }
-  .hero, .feature, .founding, .faq, .support-grid, .foot-row {
+  .hero, .feature, .founding, .faq, .foot-row {
     grid-template-columns: 1fr;
     display: flex;
     flex-direction: column;
