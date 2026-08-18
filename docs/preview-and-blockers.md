@@ -32,7 +32,9 @@ No GitHub Pages settings were changed. Pages was already unset on this repositor
 
 ### Designer source images were not on disk
 
-Designer source is independently vote-clean and may be used again. In this environment the studio mount is still missing, so those files could not be opened or copied. The built founding-access line remains “Give feedback on tone and recovery copy.”
+Designer source is independently vote-clean and may be used again. In this environment the studio mount is still missing, so those files could not be opened or copied.
+
+Approved art lock still **not on disk**: `/workspace/studio/bestie/companion-sassy.png`. Placement crop `sassy-center-transparent.png` is also missing. Chat attachments arrived as descriptions, not persistable bytes. No replacement character was invented. The page still uses a CSS stand-in until those exact files can be copied into `assets/`.
 
 Designer signed `/workspace/studio/bestie/visual/web/scene-founding-access.png`. That path, and the other studio visual paths below, were **not present** here:
 
