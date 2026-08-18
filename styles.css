@@ -157,6 +157,12 @@ h1, h2, .foot-title {
   line-height: 1.05;
 }
 h1 { font-size: var(--display-size); margin-bottom: 1.1rem; }
+.hero h1.serif-title,
+.founding h2.serif-title,
+.artifact-scene h2.serif-title {
+  font-family: var(--serif);
+  font-weight: 600;
+}
 .guilt { color: var(--cherry); }
 h2 { font-size: var(--section-size); margin-bottom: 0.9rem; }
 .serif-title { font-family: var(--serif); font-weight: 600; letter-spacing: -0.03em; }
@@ -185,10 +191,14 @@ main > aside { padding: 4.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2)
 .feature-copy .fine { margin-top: 1.4rem; }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.6rem; }
-.hero-visual { position: relative; min-height: 520px; }
+.hero-visual {
+  position: relative;
+  min-height: 600px;
+  overflow: visible;
+}
 .halo {
   position: absolute;
-  inset: 8% 6% 4% 18%;
+  inset: 6% 2% 2% 8%;
   border: 1px solid var(--hair);
   border-radius: 50%;
   pointer-events: none;
@@ -459,12 +469,13 @@ main > aside { padding: 4.5rem max(var(--gutter), calc((100% - var(--wrap)) / 2)
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 2.5rem;
-  align-items: end;
+  align-items: stretch;
   background: var(--cherry);
   color: #fff;
   border-radius: var(--radius) var(--radius) 0 0;
 }
 .founding h2 { color: #fff; }
+.founding h2.serif-title { color: #fff; }
 .founding-copy > p { max-width: 36rem; }
 .founding-price { font-weight: 500; }
 .access-card {
@@ -616,14 +627,17 @@ th { color: var(--dim); font-weight: 500; }
   max-width: 280px;
   pointer-events: none;
   object-fit: contain;
+  object-position: bottom center;
 }
 .sassy-hero {
   position: absolute;
-  right: 8%;
+  left: 210px;
+  right: auto;
   bottom: 0;
   z-index: 2;
-  height: 460px;
-  max-width: 240px;
+  height: 560px;
+  width: auto;
+  max-width: none;
 }
 .sassy-vault,
 .sassy-held {
@@ -634,14 +648,28 @@ th { color: var(--dim); font-weight: 500; }
   height: 180px;
   max-width: 100px;
 }
-.sassy-lg,
+.sassy-lg {
+  position: relative;
+  height: 620px;
+  width: auto;
+  max-width: 340px;
+  margin: 0 auto;
+  filter: drop-shadow(0 18px 28px rgba(42, 33, 28, 0.18));
+}
 .sassy-artifact {
   position: relative;
-  height: 460px;
-  max-width: 260px;
+  height: 600px;
+  width: auto;
+  max-width: 340px;
   margin: 0 auto;
+  filter: drop-shadow(0 18px 28px rgba(42, 33, 28, 0.12));
 }
-.sassy-identity { min-height: 360px; display: grid; place-items: end center; }
+.sassy-identity {
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -650,6 +678,16 @@ th { color: var(--dim); font-weight: 500; }
 @media (prefers-contrast: more) {
   :root { --hair: rgba(42, 33, 28, 0.45); --dim: #3d322c; }
   .btn, input, .scene-card, .nav { border-width: 2px; }
+}
+
+@media (max-width: 980px) and (min-width: 601px) {
+  .sassy-hero {
+    left: 150px;
+    height: 440px;
+  }
+  .hero-visual { min-height: 480px; }
+  .sassy-lg { height: 480px; }
+  .sassy-artifact { height: 460px; }
 }
 
 @media (max-width: 600px) {
@@ -661,19 +699,27 @@ th { color: var(--dim); font-weight: 500; }
     flex-direction: column;
     align-items: stretch;
   }
-  .hero-visual { min-height: 0; padding-bottom: 8px; }
+  .hero-visual {
+    min-height: 440px;
+    padding-bottom: 8px;
+    display: grid;
+    justify-items: center;
+  }
+  .phone-stage { margin: 0 auto; }
   .phone { margin: 0 auto; position: relative; z-index: 3; }
   .sassy-hero {
     position: absolute;
-    right: -6%;
     left: auto;
+    right: 0;
     bottom: 0;
     z-index: 2;
-    height: 280px;
-    max-width: 150px;
+    height: 320px;
+    max-width: 170px;
   }
   .founding { border-radius: 0; padding-bottom: 2.5rem; }
-  .sassy-lg, .sassy-artifact { height: 340px; }
+  .sassy-lg { height: 420px; max-width: 230px; }
+  .sassy-artifact { height: 400px; max-width: 220px; }
+  .sassy-identity { min-height: 360px; }
   main > section, main > aside { padding: 3.2rem var(--gutter); }
   .foot { padding: 2.4rem var(--gutter) 2.8rem; }
 }

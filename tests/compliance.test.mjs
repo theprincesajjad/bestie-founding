@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFileSync, existsSync } from "node:fs";
 import { describe, test } from "node:test";
 import { fileURLToPath } from "node:url";
@@ -239,12 +240,43 @@ describe("product scenes and construction locks", () => {
     assert.doesNotMatch(html, /CSS brand figure|sassy sassy-hero|sassy sassy-lg/);
   });
 
+  test("hero, founding, and artifact use the real Sassy cutout", () => {
+    const hero = html.slice(html.indexOf('class="hero"'), html.indexOf('id="fast-log"'));
+    const artifact = html.slice(html.indexOf('id="artifact"'), html.indexOf('id="founding-access"'));
+    const founding = html.slice(html.indexOf('id="founding-access"'), html.indexOf('id="supporter"'));
+    assert.match(hero, /assets\/sassy-center-transparent\.png/);
+    assert.match(artifact, /assets\/sassy-center-transparent\.png/);
+    assert.match(founding, /assets\/sassy-center-transparent\.png/);
+    assert.match(hero, /class="sassy-img sassy-hero"/);
+    assert.match(artifact, /class="sassy-img sassy-artifact"/);
+    assert.match(founding, /class="sassy-img sassy-lg"/);
+    assert.match(css, /\.phone-stage[\s\S]*z-index:\s*3/);
+    assert.match(css, /\.sassy-hero[\s\S]*z-index:\s*2/);
+  });
+
   test("Fast Log sheet does not include Sassy", () => {
     const start = html.indexOf('id="fast-log"');
     const end = html.indexOf('id="craving-vault"');
     const sheet = html.slice(start, end);
     assert.doesNotMatch(sheet, /sassy-figure|aria-label="Sassy"/i);
   });
+});
+
+describe("locked visual asset hashes", () => {
+  const locked = {
+    "assets/sassy-center-transparent.png": "1e200509ebbacb18d2d61719d35ed9c8deb9815cb3140b00786b13a4817a259f",
+    "assets/companion-sassy.png": "5dcc5e1a6ea34875fe196c0fc7048aef3cbb6cbb965faa0e8c39f1172c95b78f",
+    "assets/scene-hero.png": "96a9d37e556fc30162f83adfa4bf83fa83abe330c63ac1d4cb10e9f9084064fd",
+    "assets/scene-founding-access.png": "5a09486c085278afd06dc83902649c5427129e271b1cfd156d958f059c30c699",
+    "assets/scene-open-source-proof.png": "448cd4542eb949bbb876bf3986927c267741a17fae83b3aa35c74b60e117f573"
+  };
+
+  for (const [rel, expected] of Object.entries(locked)) {
+    test(`${rel} matches the locked SHA-256`, () => {
+      const actual = createHash("sha256").update(readFileSync(join(root, rel))).digest("hex");
+      assert.equal(actual, expected);
+    });
+  }
 });
 
 describe("accessibility, motion, and metadata", () => {
