@@ -181,7 +181,8 @@ describe("product scenes and construction locks", () => {
       "A one-minute check-in, soft consistency, optional weight, and one useful focus for next week. Private by default.",
       "Keep showing up. We'll meet you there.",
       "Show the artifact. Skip the star theater.",
-      "being prepared for an open-source release"
+      "The repo is private and being prepared for an open-source release. Until the exact source module, license, and commit are public, this page shows only the verified build artifact.",
+      "Being prepared for an open-source release."
     ];
     for (const line of lines) {
       assert.match(html, new RegExp(line.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
