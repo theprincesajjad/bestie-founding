@@ -24,7 +24,7 @@ Rendered captures (after `npm run capture`) land in `artifacts/`:
 - `artifacts/desktop-1440.png` (1440×8200)
 - `artifacts/mobile-390.png` (390×14000)
 
-OCR of those captures found the truth line “being prepared for an open-source release” and the label “Bestie Founding Supporter”. It did not find vote, Member, “open-source project”, “Help steward Bestie in the open”, or “source publication pending”.
+OCR of those captures must show the truth line “being prepared for an open-source release”, the label “Bestie Founding Supporter”, and the informational amounts CA$5, CA$15, and CA$50. It must not find vote, Member, “open-source project”, “Help steward Bestie in the open”, “source publication pending”, C$5 / C$15 / C$35, or Founding Builder.
 
 No GitHub Pages settings were changed. Pages was already unset on this repository.
 

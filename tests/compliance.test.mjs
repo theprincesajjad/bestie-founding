@@ -36,7 +36,6 @@ describe("forbidden claims and theater", () => {
     "A vote on tone and recovery copy",
     "source publication pending",
     "Founding Builder",
-    "Founding Steward",
     "C$5",
     "C$15",
     "C$35",
@@ -57,7 +56,7 @@ describe("forbidden claims and theater", () => {
 
   test("does not invent numeric prices or checkout", () => {
     assert.match(html, /No payment today/);
-    assert.doesNotMatch(published, /C\$35|CA\$35/);
+    assert.doesNotMatch(published, /C\$5|C\$15|C\$35|CA\$35/);
     assert.doesNotMatch(published, /stripe\.com|buy now|subscribe now/i);
     assert.doesNotMatch(html, /href=["'][^"']*(checkout|paypal|stripe|ko-fi)/i);
     assert.doesNotMatch(html, /\bMember\b|\bMembers\b/);
@@ -128,13 +127,20 @@ describe("Bestie Founding Supporter section", () => {
     assert.match(html, /<h2 id="supporter-title">Bestie Founding Supporter<\/h2>/);
     assert.match(html, /Bestie is being prepared for an open-source release\./);
     assert.match(html, /Enrollment is disabled\./);
+    assert.match(html, /These prices are information only\./);
     assert.match(html, /id="supporter-cta"[^>]*disabled/);
     assert.doesNotMatch(html, /id="supporter-form"|href=["'][^"']*enroll/i);
   });
 
-  test("does not publish amounts or extra tier names", () => {
-    assert.doesNotMatch(html, /CA\$|C\$5|C\$15|C\$35|C\$50/);
-    assert.doesNotMatch(html, /Founding Builder|Founding Steward|Founding Circle/);
+  test("lists only the locked informational amounts", () => {
+    assert.match(html, /CA\$5 \/ month — Founding Supporter/);
+    assert.match(html, /Project updates\. Supporter badge\./);
+    assert.match(html, /CA\$15 \/ month — Founding Circle/);
+    assert.match(html, /Everything in Founding Supporter, plus optional public name listing with consent, and early notices about public builds\./);
+    assert.match(html, /CA\$50 \/ month — Founding Steward/);
+    assert.match(html, /Everything in Founding Circle, plus roadmap feedback sessions \/ submit feedback\./);
+    assert.match(html, /Feedback is explicitly non-binding and provides no authority\./);
+    assert.doesNotMatch(html, /C\$5|C\$15|C\$35|Founding Builder/);
     assert.doesNotMatch(html, /\d+%/);
   });
 
