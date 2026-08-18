@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
 import { createServer } from "node:http";
-import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync } from "node:fs";
 import { extname, join } from "node:path";
 
 const root = process.cwd();
@@ -34,28 +34,34 @@ await new Promise((resolve) => server.listen(4174, "127.0.0.1", resolve));
 
 function shot(width, height, name) {
   const dest = join(outDir, name);
-  const result = spawnSync("google-chrome-stable", [
-    "--headless=new",
+  const tmp = `/tmp/${name}`;
+  if (existsSync(dest)) rmSync(dest);
+  if (existsSync(tmp)) rmSync(tmp);
+  const result = spawnSync("timeout", [
+    "20",
+    "google-chrome-stable",
+    "--headless=old",
     "--no-sandbox",
     "--disable-gpu",
+    "--disable-dev-shm-usage",
     "--hide-scrollbars",
     "--force-device-scale-factor=1",
-    `--user-data-dir=/tmp/bestie-cap-${width}`,
+    `--user-data-dir=/tmp/bestie-cap-${width}-${Date.now()}`,
     `--window-size=${width},${height}`,
-    "--virtual-time-budget=12000",
-    `--screenshot=${dest}`,
+    `--screenshot=${tmp}`,
     "http://127.0.0.1:4174/"
   ], { encoding: "utf8" });
-  if (result.status !== 0 || !existsSync(dest) || statSync(dest).size < 1000) {
+  if (!existsSync(tmp) || statSync(tmp).size < 1000) {
     console.error(result.stderr || result.stdout);
-    throw new Error(`chrome failed for ${name}`);
+    throw new Error(`chrome failed for ${name} status=${result.status} error=${result.error}`);
   }
+  copyFileSync(tmp, dest);
   if (existsSync("/opt/cursor/artifacts")) copyFileSync(dest, join(publicDir, name));
   console.log(`${dest} (${statSync(dest).size} bytes)`);
 }
 
-shot(1440, 9200, "desktop-1440.png");
-shot(390, 15500, "mobile-390.png");
+shot(1440, 8800, "desktop-1440.png");
+shot(390, 12800, "mobile-390.png");
 for (const name of ["desktop-1440.png", "mobile-390.png"]) {
   const dest = join(outDir, name);
   const captures = join(outDir, "captures");
